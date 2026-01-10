@@ -104,44 +104,49 @@
 
     <aside id="sidebar">
         <div class="flex justify-between items-center mb-10">
-            <h2 class="text-2xl font-bold text-white">القائمة</h2>
+            <h2 class="text-2xl font-bold text-white">
+                <span class="lang-ar">القائمة</span>
+                <span class="lang-en hidden-lang">Menu</span>
+            </h2>
             <button onclick="toggleSidebar()" class="text-slate-400 hover:text-white"><i class="fas fa-times text-2xl"></i></button>
         </div>
         
         <ul class="space-y-6 flex-1">
             <li>
-                <a href="#features" onclick="toggleSidebar()" class="flex items-center gap-3 text-slate-300 hover:text-indigo-400 text-lg transition">
-                    <i class="fas fa-star w-6"></i> المميزات
+                <a href="#how-to-use" onclick="toggleSidebar()" class="flex items-center gap-3 text-slate-300 hover:text-indigo-400 text-lg transition">
+                    <i class="fas fa-star w-6"></i> 
+                    <span class="lang-ar">كيف يعمل؟</span>
+                    <span class="lang-en hidden-lang">How it works?</span>
                 </a>
             </li>
             <li>
                 <a href="projects.html" class="flex items-center gap-3 text-slate-300 hover:text-indigo-400 text-lg transition">
-                    <i class="fas fa-layer-group w-6"></i> مشاريع أخرى
+                    <i class="fas fa-layer-group w-6"></i> 
+                    <span class="lang-ar">سابقة أعمالنا</span>
+                    <span class="lang-en hidden-lang">Portfolio</span>
                 </a>
             </li>
             <li>
-                <button onclick="openRequestModal(); toggleSidebar();" class="flex items-center gap-3 text-slate-300 hover:text-indigo-400 text-lg transition w-full text-right">
-                    <i class="fas fa-rocket w-6"></i> طلب تجربة النظام
+                <button onclick="openRequestModal(); toggleSidebar();" class="flex items-center gap-3 text-slate-300 hover:text-indigo-400 text-lg transition w-full text-right ltr:text-left">
+                    <i class="fas fa-rocket w-6"></i> 
+                    <span class="lang-ar">طلب تجربة النظام</span>
+                    <span class="lang-en hidden-lang">Request Access</span>
                 </button>
             </li>
             <li>
                 <a href="guide.html" onclick="toggleSidebar()" class="flex items-center gap-3 text-slate-300 hover:text-indigo-400 text-lg transition">
-                    <i class="fas fa-book-open w-6"></i> دليل الاستخدام
+                    <i class="fas fa-book-open w-6"></i> 
+                    <span class="lang-ar">دليل الاستخدام</span>
+                    <span class="lang-en hidden-lang">User Guide</span>
                 </a>
             </li>
             <li>
-                <button onclick="openMsgModal(); toggleSidebar();" class="flex items-center gap-3 text-slate-300 hover:text-indigo-400 text-lg transition w-full text-right">
+                <button onclick="openMsgModal(); toggleSidebar();" class="flex items-center gap-3 text-slate-300 hover:text-indigo-400 text-lg transition w-full text-right ltr:text-left">
                     <i class="fas fa-envelope w-6"></i> 
                     <span class="font-mono">info@24sevenAi.com</span>
                 </button>
             </li>
         </ul>
-
-        <div class="pt-8 border-t border-slate-700">
-            <button onclick="toggleLang()" class="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-slate-600 hover:bg-slate-800 transition text-sm font-bold text-slate-300">
-                <i class="fas fa-globe"></i> <span id="lang-label-side">English</span>
-            </button>
-        </div>
     </aside>
 
     <nav class="fixed top-0 w-full z-50 backdrop-blur-md border-b border-white/5 py-4 px-6 flex justify-between items-center">
@@ -150,7 +155,12 @@
             <span class="text-xl font-bold tracking-tight">24Seven<span class="text-indigo-400">.ai</span></span>
         </div>
         
-        <div class="flex items-center gap-4">
+        <div class="flex items-center gap-3">
+            <button onclick="toggleLang()" class="flex items-center gap-2 px-3 py-2 bg-slate-800/50 hover:bg-slate-700 border border-slate-700 rounded-lg text-slate-300 hover:text-white transition text-sm font-bold">
+                <i class="fas fa-globe"></i> 
+                <span id="lang-label-nav">English</span>
+            </button>
+
             <button onclick="toggleSidebar()" class="p-2 text-white text-2xl hover:text-indigo-400 transition">
                 <i class="fas fa-bars"></i>
             </button>
@@ -196,7 +206,7 @@
         </div>
     </header>
 
-    <section class="py-24 px-6 bg-black/20">
+    <section id="how-to-use" class="py-24 px-6 bg-black/20">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">
@@ -217,8 +227,8 @@
                         <span class="lang-en hidden-lang">1. Be Hyper-Local</span>
                     </h3>
                     <p class="text-sm text-slate-400">
-                        <span class="lang-ar">بدلاً من "القاهرة"، ابحث في "التجمع الخامس".</span>
-                        <span class="lang-en hidden-lang">Instead of "Cairo", search "Fifth Settlement".</span>
+                        <span class="lang-ar">بدلاً من "القاهرة"، ابحث في "التجمع الخامس" أو "المنطقة الصناعية أكتوبر". النظام يعشق التحديد.</span>
+                        <span class="lang-en hidden-lang">Instead of "Cairo", search "Fifth Settlement" or "October Industrial Zone".</span>
                     </p>
                 </div>
                 <div class="glass-card border-indigo-500/20">
@@ -228,8 +238,8 @@
                         <span class="lang-en hidden-lang">2. Niche Down</span>
                     </h3>
                     <p class="text-sm text-slate-400">
-                        <span class="lang-ar">بدلاً من "أطباء"، اكتب "عيادة أسنان".</span>
-                        <span class="lang-en hidden-lang">Instead of "Doctors", type "Dental Clinic".</span>
+                        <span class="lang-ar">بدلاً من "أطباء"، اكتب "عيادة أسنان" أو "جراحة تجميل". كلما كنت محدداً، زادت الدقة.</span>
+                        <span class="lang-en hidden-lang">Instead of "Doctors", type "Dental Clinic" or "Plastic Surgery". Specificity is key.</span>
                     </p>
                 </div>
                 <div class="glass-card border-green-500/30">
@@ -281,7 +291,7 @@
         </div>
     </section>
 
-    <section id="features" class="py-24 px-6 relative">
+    <section class="py-24 px-6 relative">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-5xl font-bold">
@@ -330,6 +340,22 @@
         </div>
     </section>
 
+    <section class="py-24 px-6 text-center border-t border-slate-800/50">
+        <h2 class="text-3xl font-bold mb-4 text-white">
+            <span class="lang-ar">هل تبحث عن حلول برمجية أخرى؟</span>
+            <span class="lang-en hidden-lang">Looking for other solutions?</span>
+        </h2>
+        <p class="text-slate-400 mb-8">
+            <span class="lang-ar">نحن نبني أنظمة CRM، بوتات مبيعات، وحلول إدارة أساطيل. اكتشف باقي أعمالنا.</span>
+            <span class="lang-en hidden-lang">We build CRMs, Sales Bots, and Fleet Systems. Explore our portfolio.</span>
+        </p>
+        <a href="projects.html" class="inline-flex items-center gap-2 text-indigo-400 hover:text-white transition border-b border-indigo-500 pb-1">
+            <span class="lang-ar">تصفح سابقة الأعمال</span>
+            <span class="lang-en hidden-lang">Browse Portfolio</span>
+            <i class="fas fa-arrow-left mt-1 rtl:rotate-0 ltr:rotate-180"></i>
+        </a>
+    </section>
+
     <section class="py-24 text-center px-6 relative overflow-hidden">
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-gradient-to-b from-indigo-900/10 to-transparent -z-10"></div>
         
@@ -354,7 +380,7 @@
             <div>
                 <div class="flex items-center gap-2 mb-4">
                     <div class="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center text-white"><i class="fas fa-brain"></i></div>
-                    <span class="text-xl font-bold">24Seven<span class="text-indigo-400">.ai</span></span>
+                    <span class="text-xl font-bold text-white">24Seven<span class="text-indigo-400">.ai</span></span>
                 </div>
                 <p class="text-slate-400 text-sm leading-relaxed mb-6">
                     <span class="lang-ar">المنصة الأولى عربياً للذكاء البيعي وتوليد العملاء المحتملين بدقة عالية باستخدام تقنيات البحث المتقدم.</span>
@@ -362,15 +388,21 @@
                 </p>
             </div>
             <div>
-                <h4 class="text-white font-bold mb-6">روابط سريعة</h4>
+                <h4 class="text-white font-bold mb-6">
+                    <span class="lang-ar">روابط سريعة</span>
+                    <span class="lang-en hidden-lang">Quick Links</span>
+                </h4>
                 <ul class="space-y-3 text-sm text-slate-400">
-                    <li><button onclick="openRequestModal()" class="hover:text-indigo-400 transition">طلب تجربة النظام</button></li>
-                    <li><a href="guide.html" class="hover:text-indigo-400 transition">دليل الاستخدام</a></li>
-                    <li><a href="projects.html" class="hover:text-indigo-400 transition">مشاريعنا</a></li>
+                    <li><button onclick="openRequestModal()" class="hover:text-indigo-400 transition ltr:text-left w-full text-right"><span class="lang-ar">طلب تجربة النظام</span><span class="lang-en hidden-lang">Request Access</span></button></li>
+                    <li><a href="guide.html" class="hover:text-indigo-400 transition"><span class="lang-ar">دليل الاستخدام</span><span class="lang-en hidden-lang">User Guide</span></a></li>
+                    <li><a href="projects.html" class="hover:text-indigo-400 transition"><span class="lang-ar">سابقة الأعمال</span><span class="lang-en hidden-lang">Portfolio</span></a></li>
                 </ul>
             </div>
             <div>
-                <h4 class="text-white font-bold mb-6">تواصل معنا</h4>
+                <h4 class="text-white font-bold mb-6">
+                    <span class="lang-ar">تواصل معنا</span>
+                    <span class="lang-en hidden-lang">Contact Us</span>
+                </h4>
                 <ul class="space-y-4 text-sm text-slate-400">
                     <li class="flex items-center gap-3">
                         <i class="fas fa-phone-alt text-indigo-500"></i>
@@ -388,52 +420,39 @@
         </div>
     </footer>
 
-    <div id="contactModal" class="modal fixed inset-0 z-[1100] flex items-center justify-center p-4">
-        <div class="glass-card w-full max-w-md p-8 relative transform transition-all scale-100 bg-slate-900/95 border border-slate-700 shadow-2xl">
-            <button onclick="closeAllModals()" class="absolute top-4 right-4 text-slate-400 hover:text-white"><i class="fas fa-times text-xl"></i></button>
-            <div class="text-center mb-6">
-                <h3 class="text-2xl font-bold mb-2 text-white">بيانات الشركة</h3>
-                <p class="text-sm text-slate-400">قنوات التواصل الرسمية</p>
-            </div>
-            <div class="space-y-4">
-                <div class="flex items-center gap-4 p-4 rounded-xl bg-slate-800/50 border border-slate-700">
-                    <div class="w-10 h-10 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center"><i class="fas fa-phone"></i></div>
-                    <div class="text-right flex-1">
-                        <p class="text-xs text-slate-400">Hotline</p>
-                        <p class="font-bold text-white font-mono" dir="ltr">+20 112 174 8885</p>
-                    </div>
-                </div>
-                <a href="https://wa.me/201121748885" target="_blank" class="flex items-center gap-4 p-4 rounded-xl bg-slate-800/50 hover:bg-green-900/20 border border-slate-700 hover:border-green-500/50 transition">
-                    <div class="w-10 h-10 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center"><i class="fab fa-whatsapp text-xl"></i></div>
-                    <div class="text-right flex-1">
-                        <p class="text-xs text-slate-400">WhatsApp</p>
-                        <p class="font-bold text-white">Chat Support</p>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
-
     <div id="msgModal" class="modal fixed inset-0 z-[1100] flex items-center justify-center p-4">
         <div class="glass-card w-full max-w-lg p-8 relative transform transition-all scale-100 bg-slate-900/95 border border-slate-700 shadow-2xl">
             <button onclick="closeAllModals()" class="absolute top-4 right-4 text-slate-400 hover:text-white"><i class="fas fa-times text-xl"></i></button>
             <div class="text-center mb-6">
                 <div class="w-12 h-12 bg-blue-600/20 text-blue-500 rounded-full mx-auto flex items-center justify-center mb-3 text-xl"><i class="fas fa-paper-plane"></i></div>
-                <h3 class="text-2xl font-bold mb-2 text-white">راسلنا مباشرة</h3>
-                <p class="text-sm text-slate-400">سيتم الرد على بريدك الإلكتروني خلال 24 ساعة.</p>
+                <h3 class="text-2xl font-bold mb-2 text-white">
+                    <span class="lang-ar">راسلنا مباشرة</span>
+                    <span class="lang-en hidden-lang">Contact Us Directly</span>
+                </h3>
+                <p class="text-sm text-slate-400">
+                    <span class="lang-ar">سيتم الرد على بريدك الإلكتروني خلال 24 ساعة.</span>
+                    <span class="lang-en hidden-lang">We will reply to your email within 24 hours.</span>
+                </p>
             </div>
             <form action="https://formspree.io/f/xzddpdga" method="POST" class="space-y-4">
-                <input type="hidden" name="_subject" value="New Message via Website">
+                <input type="hidden" name="_subject" value="Inquiry from Home Page">
                 <div>
-                    <label class="block text-xs text-slate-400 mb-1">البريد الإلكتروني / Your Email</label>
-                    <input type="email" name="email" required class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 focus:border-indigo-500 focus:outline-none transition text-white" placeholder="name@company.com">
+                    <label class="block text-xs text-slate-400 mb-1">
+                        <span class="lang-ar">البريد الإلكتروني</span>
+                        <span class="lang-en hidden-lang">Email Address</span>
+                    </label>
+                    <input type="email" name="email" required class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 focus:border-indigo-500 focus:outline-none transition text-white">
                 </div>
                 <div>
-                    <label class="block text-xs text-slate-400 mb-1">الرسالة / Message</label>
-                    <textarea name="message" rows="4" required class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 focus:border-indigo-500 focus:outline-none transition text-white" placeholder="اكتب استفسارك هنا..."></textarea>
+                    <label class="block text-xs text-slate-400 mb-1">
+                        <span class="lang-ar">الرسالة</span>
+                        <span class="lang-en hidden-lang">Message</span>
+                    </label>
+                    <textarea name="message" rows="4" required class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 focus:border-indigo-500 focus:outline-none transition text-white"></textarea>
                 </div>
                 <button type="submit" class="w-full py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold rounded-xl shadow-lg transition">
-                    إرسال الرسالة
+                    <span class="lang-ar">إرسال الرسالة</span>
+                    <span class="lang-en hidden-lang">Send Message</span>
                 </button>
             </form>
         </div>
@@ -444,35 +463,51 @@
             <button onclick="closeAllModals()" class="absolute top-4 right-4 text-slate-400 hover:text-white"><i class="fas fa-times text-xl"></i></button>
             <div class="text-center mb-6">
                 <div class="w-12 h-12 bg-green-600/20 text-green-500 rounded-full mx-auto flex items-center justify-center mb-3 text-xl"><i class="fas fa-lock"></i></div>
-                <h3 class="text-2xl font-bold mb-2 text-white">طلب صلاحية دخول</h3>
+                <h3 class="text-2xl font-bold mb-2 text-white">
+                    <span class="lang-ar">طلب صلاحية دخول</span>
+                    <span class="lang-en hidden-lang">Request Access</span>
+                </h3>
                 <p class="text-sm text-slate-400">
-                    النظام متاح لعدد محدود حالياً. سجل بياناتك وسيتم إرسال <span class="text-green-400 font-bold">رابط الدخول</span> لبريدك الإلكتروني بعد المراجعة.
+                    <span class="lang-ar">سجل بياناتك وسيتم إرسال رابط الدخول لبريدك الإلكتروني.</span>
+                    <span class="lang-en hidden-lang">Register your details and the access link will be sent to your email.</span>
                 </p>
             </div>
             <form action="https://formspree.io/f/xzddpdga" method="POST" class="space-y-4">
-                <input type="hidden" name="_subject" value="🚀 DEMO REQUEST from Website">
+                <input type="hidden" name="_subject" value="DEMO REQUEST from Home Page">
                 <div class="grid grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-xs text-slate-400 mb-1">الاسم</label>
+                        <label class="block text-xs text-slate-400 mb-1">
+                            <span class="lang-ar">الاسم</span>
+                            <span class="lang-en hidden-lang">Name</span>
+                        </label>
                         <input type="text" name="name" required class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 focus:border-green-500 transition text-white">
                     </div>
                     <div>
-                        <label class="block text-xs text-slate-400 mb-1">الهاتف</label>
+                        <label class="block text-xs text-slate-400 mb-1">
+                            <span class="lang-ar">الهاتف</span>
+                            <span class="lang-en hidden-lang">Phone</span>
+                        </label>
                         <input type="tel" name="phone" required class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 focus:border-green-500 transition text-white">
                     </div>
                 </div>
                 <div>
-                    <label class="block text-xs text-slate-400 mb-1">البريد الإلكتروني (مهم جداً)</label>
+                    <label class="block text-xs text-slate-400 mb-1">
+                        <span class="lang-ar">البريد الإلكتروني</span>
+                        <span class="lang-en hidden-lang">Email</span>
+                    </label>
                     <input type="email" name="email" required class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 focus:border-green-500 transition text-white">
                 </div>
                 <div>
-                    <label class="block text-xs text-slate-400 mb-1">اسم الشركة / النشاط</label>
+                    <label class="block text-xs text-slate-400 mb-1">
+                        <span class="lang-ar">اسم الشركة</span>
+                        <span class="lang-en hidden-lang">Company Name</span>
+                    </label>
                     <input type="text" name="company" required class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 focus:border-green-500 transition text-white">
                 </div>
                 <button type="submit" class="w-full py-4 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-bold rounded-xl shadow-lg transition transform hover:scale-[1.01]">
-                    تسجيل طلب الدخول
+                    <span class="lang-ar">تسجيل طلب الدخول</span>
+                    <span class="lang-en hidden-lang">Submit Request</span>
                 </button>
-                <p class="text-xs text-center text-slate-500 mt-2">سيصلك الرد خلال دقائق في أوقات العمل.</p>
             </form>
         </div>
     </div>
@@ -482,11 +517,6 @@
             document.querySelectorAll('.modal').forEach(m => m.classList.remove('active'));
             document.getElementById('overlay').classList.remove('active');
             document.getElementById('sidebar').classList.remove('active');
-        }
-        function openModal() {
-            closeAllModals();
-            document.getElementById('overlay').classList.add('active');
-            document.getElementById('contactModal').classList.add('active');
         }
         function openMsgModal() {
             closeAllModals();
@@ -513,14 +543,12 @@
             const html = document.documentElement;
             const currentLang = html.getAttribute('lang');
             const newLang = currentLang === 'ar' ? 'en' : 'ar';
-            const langLabel = document.getElementById('lang-label');
-            const langLabelSide = document.getElementById('lang-label-side');
+            const langLabelNav = document.getElementById('lang-label-nav');
             
             html.setAttribute('lang', newLang);
             html.setAttribute('dir', newLang === 'ar' ? 'rtl' : 'ltr');
             
-            if(langLabel) langLabel.innerText = newLang === 'ar' ? 'English' : 'العربية';
-            if(langLabelSide) langLabelSide.innerText = newLang === 'ar' ? 'English' : 'العربية';
+            if(langLabelNav) langLabelNav.innerText = newLang === 'ar' ? 'English' : 'العربية';
             
             const arElements = document.querySelectorAll('.lang-ar');
             const enElements = document.querySelectorAll('.lang-en');
