@@ -7,156 +7,123 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;500;700;900&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    
     <style>
-        body { font-family: 'Cairo', sans-serif; background-color: #0f172a; color: #f8fafc; }
-        .glass-card {
-            background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 20px;
+        :root {
+            --bg-dark: #0f172a;
+            --primary: #6366f1;
+            --glass-bg: rgba(30, 41, 59, 0.95);
         }
-        /* Loader Animation */
-        .loader {
-            border: 3px solid rgba(255,255,255,0.3); border-radius: 50%; border-top: 3px solid #fff;
-            width: 20px; height: 20px; animation: spin 1s linear infinite; display: inline-block;
+        body { font-family: 'Cairo', sans-serif; background-color: var(--bg-dark); color: #f8fafc; }
+        html[lang="en"] body { font-family: 'Outfit', sans-serif; }
+
+        /* Sidebar Styles */
+        #sidebar {
+            position: fixed; top: 0; right: -300px; width: 300px; height: 100%;
+            background: var(--glass-bg); backdrop-filter: blur(20px);
+            border-left: 1px solid rgba(255,255,255,0.1);
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1000; padding: 2rem; display: flex; flex-direction: column;
         }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        
-        /* واتساب العائم */
-        .whatsapp-float {
-            position: fixed; bottom: 30px; left: 30px;
-            width: 60px; height: 60px; background-color: #25d366; color: white;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-size: 32px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); z-index: 100;
-            transition: all 0.3s; animation: pulse-green 2s infinite;
-        }
-        .whatsapp-float:hover { transform: scale(1.1); }
-        @keyframes pulse-green {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-        }
+        #sidebar.active { right: 0; }
+        .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 999; opacity: 0; visibility: hidden; transition: 0.3s; }
+        .overlay.active { opacity: 1; visibility: visible; }
+        .modal { opacity: 0; visibility: hidden; pointer-events: none; transition: 0.3s ease; }
+        .modal.active { opacity: 1; visibility: visible; pointer-events: auto; }
+
+        .glass-card { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 20px; }
+        .hidden-lang { display: none !important; }
     </style>
 </head>
-<body class="min-h-screen flex items-center justify-center p-4 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900/40 via-[#0f172a] to-black">
+<body class="min-h-screen bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900/40 via-[#0f172a] to-black">
 
-    <div class="w-full max-w-lg glass-card p-8 relative shadow-2xl shadow-indigo-500/20">
-        
-        <div class="text-center mb-8">
-            <div class="w-16 h-16 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-2xl mx-auto flex items-center justify-center mb-4 shadow-lg ring-1 ring-white/20">
-                <i class="fas fa-rocket text-3xl text-white"></i>
-            </div>
-            <h2 class="text-3xl font-bold mb-2">تفعيل محرك البحث</h2>
-            <p class="text-slate-400 text-sm">أدخل بياناتك للدخول إلى مساحة العمل (Client Workspace) وبدء البحث.</p>
+    <div id="overlay" class="overlay" onclick="closeAllModals()"></div>
+
+    <aside id="sidebar">
+        <div class="flex justify-between items-center mb-10">
+            <h2 class="text-2xl font-bold text-white">القائمة</h2>
+            <button onclick="toggleSidebar()" class="text-slate-400 hover:text-white"><i class="fas fa-times text-2xl"></i></button>
         </div>
+        <ul class="space-y-6 flex-1">
+            <li><a href="index.html" class="flex items-center gap-3 text-slate-300 hover:text-indigo-400 text-lg transition"><i class="fas fa-home w-6"></i> الرئيسية</a></li>
+            <li><a href="projects.html" class="flex items-center gap-3 text-slate-300 hover:text-indigo-400 text-lg transition"><i class="fas fa-layer-group w-6"></i> مشاريعنا</a></li>
+            <li><button onclick="openMsgModal(); toggleSidebar();" class="flex items-center gap-3 text-slate-300 hover:text-indigo-400 text-lg transition w-full text-right"><i class="fas fa-envelope w-6"></i> <span class="font-mono">info@24sevenAi.com</span></button></li>
+        </ul>
+        <div class="pt-8 border-t border-slate-700">
+            <button onclick="toggleLang()" class="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-slate-600 hover:bg-slate-800 transition text-sm font-bold text-slate-300"><i class="fas fa-globe"></i> <span id="lang-label-side">English</span></button>
+        </div>
+    </aside>
 
-        <form id="accessForm" class="space-y-4">
+    <nav class="fixed top-0 w-full z-50 backdrop-blur-md border-b border-white/5 py-4 px-6 flex justify-between items-center">
+        <a href="index.html" class="flex items-center gap-2 text-xl font-bold text-slate-300 hover:text-white transition">
+            <i class="fas fa-arrow-right text-indigo-400"></i> العودة للرئيسية
+        </a>
+        <button onclick="toggleSidebar()" class="p-2 text-white text-2xl hover:text-indigo-400 transition"><i class="fas fa-bars"></i></button>
+    </nav>
+
+    <div class="flex items-center justify-center min-h-screen pt-20 px-4">
+        <div class="w-full max-w-lg glass-card p-8 relative shadow-2xl shadow-indigo-500/20">
             
-            <div class="grid grid-cols-2 gap-4">
-                <div>
-                    <label class="block text-xs text-indigo-300 mb-1">الاسم</label>
-                    <input type="text" name="name" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 focus:border-indigo-500 focus:outline-none transition text-white">
+            <div class="text-center mb-8">
+                <div class="w-16 h-16 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-2xl mx-auto flex items-center justify-center mb-4 shadow-lg ring-1 ring-white/20">
+                    <i class="fas fa-fingerprint text-3xl text-white"></i>
                 </div>
-                <div>
-                    <label class="block text-xs text-indigo-300 mb-1">رقم الهاتف</label>
-                    <input type="tel" name="phone" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 focus:border-indigo-500 focus:outline-none transition text-white">
+                <h2 class="text-3xl font-bold mb-2 text-white">تفعيل النسخة التجريبية</h2>
+                <p class="text-slate-400 text-sm">أدخل بياناتك لفتح صلاحيات الوصول.</p>
+            </div>
+
+            <form action="https://formspree.io/f/xzddpdga" method="POST" class="space-y-4">
+                <input type="hidden" name="_subject" value="ACTIVATION REQUEST from Demo Page">
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs text-indigo-300 mb-1">الاسم</label>
+                        <input type="text" name="name" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 focus:border-indigo-500 focus:outline-none transition text-white">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-indigo-300 mb-1">رقم الهاتف</label>
+                        <input type="tel" name="phone" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 focus:border-indigo-500 focus:outline-none transition text-white">
+                    </div>
                 </div>
-            </div>
 
-            <div>
-                <label class="block text-xs text-indigo-300 mb-1">اسم الشركة</label>
-                <input type="text" name="company" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 focus:border-indigo-500 focus:outline-none transition text-white">
-            </div>
+                <div>
+                    <label class="block text-xs text-indigo-300 mb-1">اسم الشركة</label>
+                    <input type="text" name="company" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 focus:border-indigo-500 focus:outline-none transition text-white">
+                </div>
 
-            <div>
-                <label class="block text-xs text-indigo-300 mb-1">المسمى الوظيفي</label>
-                <select name="job_title" class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 focus:border-indigo-500 focus:outline-none transition text-white">
-                    <option value="CEO">صاحب عمل (CEO)</option>
-                    <option value="Sales_Manager">مدير مبيعات</option>
-                    <option value="Marketer">مسوق عقاري</option>
-                    <option value="Other">أخرى</option>
-                </select>
-            </div>
+                <div>
+                    <label class="block text-xs text-indigo-300 mb-1">البريد الإلكتروني</label>
+                    <input type="email" name="email" required class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 focus:border-indigo-500 focus:outline-none transition text-white">
+                </div>
 
-            <button type="submit" id="submitBtn" class="w-full py-4 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold rounded-xl shadow-lg transition-all transform hover:scale-[1.02] flex items-center justify-center gap-2 mt-6">
-                <span>دخول النظام الآن</span>
-                <i class="fas fa-arrow-left"></i>
-            </button>
-            
-            <p id="statusMsg" class="text-center text-xs text-green-400 mt-3 hidden animate-pulse"></p>
-        </form>
+                <button type="submit" class="w-full py-4 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold rounded-xl shadow-lg transition-all transform hover:scale-[1.02] flex items-center justify-center gap-2 mt-6">
+                    <span>إرسال طلب التفعيل</span>
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <p class="text-center text-xs text-slate-500 mt-3">سيصلك رابط الدخول على بريدك الإلكتروني.</p>
+            </form>
+        </div>
     </div>
 
-    <a href="https://wa.me/201121748885?text=مساعدة_في_الدخول" class="whatsapp-float" target="_blank" title="مساعدة">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <div id="msgModal" class="modal fixed inset-0 z-[1100] flex items-center justify-center p-4">
+        <div class="glass-card w-full max-w-lg p-8 relative transform transition-all scale-100 bg-slate-900/95 border border-slate-700 shadow-2xl">
+            <button onclick="closeAllModals()" class="absolute top-4 right-4 text-slate-400 hover:text-white"><i class="fas fa-times text-xl"></i></button>
+            <div class="text-center mb-6"><h3 class="text-2xl font-bold mb-2 text-white">راسلنا مباشرة</h3></div>
+            <form action="https://formspree.io/f/xzddpdga" method="POST" class="space-y-4">
+                <input type="hidden" name="_subject" value="Inquiry from Sidebar">
+                <div><label class="block text-xs text-slate-400 mb-1">البريد الإلكتروني</label><input type="email" name="email" required class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 focus:border-indigo-500 focus:outline-none transition text-white"></div>
+                <div><label class="block text-xs text-slate-400 mb-1">الرسالة</label><textarea name="message" rows="4" required class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 focus:border-indigo-500 focus:outline-none transition text-white"></textarea></div>
+                <button type="submit" class="w-full py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold rounded-xl shadow-lg transition">إرسال الرسالة</button>
+            </form>
+        </div>
+    </div>
 
     <script>
-        // ============================================================
-        // ⚙️ إعدادات الربط
-        // ============================================================
-        
-        // 1. رابط Formspree (كما هو)
-        const FORMSPREE_ENDPOINT = "https://formspree.io/f/xzddpdga"; 
-
-        // 2. رابط السيستم (واجهة العميل فقط) ✅ تم التعديل
-        // هذا الرابط يوجه للبحث مباشرة
-        const SYSTEM_URL = "https://bimetallic-felipa-commiserative.ngrok-free.dev"; 
-        
-        // ============================================================
-
-        const form = document.getElementById("accessForm");
-        const btn = document.getElementById("submitBtn");
-        const statusMsg = document.getElementById("statusMsg");
-
-        async function handleSubmit(event) {
-            event.preventDefault();
-            
-            // 1. تغيير شكل الزر للتحميل
-            const originalBtnText = btn.innerHTML;
-            btn.innerHTML = '<span class="loader"></span> جاري التحقق...';
-            btn.disabled = true;
-
-            const data = new FormData(event.target);
-
-            try {
-                // 2. إرسال البيانات لـ Formspree
-                const response = await fetch(FORMSPREE_ENDPOINT, {
-                    method: 'POST',
-                    body: data,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-
-                if (response.ok) {
-                    // 3. نجاح الإرسال
-                    btn.innerHTML = '<i class="fas fa-check"></i> تم التفعيل!';
-                    btn.classList.remove("from-indigo-600", "to-purple-600");
-                    btn.classList.add("bg-green-600");
-                    
-                    statusMsg.innerText = "تم تسجيل بياناتك بنجاح. جاري تحويلك لواجهة البحث...";
-                    statusMsg.classList.remove("hidden");
-                    
-                    // 4. التوجيه للسيستم بعد ثانية ونصف
-                    setTimeout(() => {
-                        window.location.href = SYSTEM_URL;
-                    }, 1500);
-
-                } else {
-                    // خطأ من السيرفر
-                    throw new Error("Form submission failed");
-                }
-            } catch (error) {
-                // خطأ في الاتصال
-                console.error(error);
-                btn.innerHTML = originalBtnText;
-                btn.disabled = false;
-                alert("حدث خطأ في التسجيل، تأكد من الاتصال بالإنترنت.");
-            }
-        }
-
-        form.addEventListener("submit", handleSubmit);
+        function closeAllModals() { document.querySelectorAll('.modal').forEach(m => m.classList.remove('active')); document.getElementById('overlay').classList.remove('active'); document.getElementById('sidebar').classList.remove('active'); }
+        function openMsgModal() { closeAllModals(); document.getElementById('overlay').classList.add('active'); document.getElementById('msgModal').classList.add('active'); }
+        function toggleSidebar() { const sidebar = document.getElementById('sidebar'); const overlay = document.getElementById('overlay'); if (sidebar.classList.contains('active')) { sidebar.classList.remove('active'); overlay.classList.remove('active'); } else { sidebar.classList.add('active'); overlay.classList.add('active'); } }
+        function toggleLang() { const html = document.documentElement; const currentLang = html.getAttribute('lang'); const newLang = currentLang === 'ar' ? 'en' : 'ar'; const langLabelSide = document.getElementById('lang-label-side'); html.setAttribute('lang', newLang); html.setAttribute('dir', newLang === 'ar' ? 'rtl' : 'ltr'); if(langLabelSide) langLabelSide.innerText = newLang === 'ar' ? 'English' : 'العربية'; }
     </script>
 </body>
 </html>
