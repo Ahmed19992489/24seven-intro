@@ -67,14 +67,12 @@
         .btn-outline { border: 1px solid rgba(255,255,255,0.2); color: white; }
         .btn-outline:hover { background: rgba(255,255,255,0.05); border-color: white; }
 
-        /* Icon Box for Features */
         .icon-box {
             width: 60px; height: 60px; border-radius: 15px;
             display: flex; align-items: center; justify-content: center;
             font-size: 1.5rem; margin-bottom: 20px;
         }
 
-        /* Modal Styles */
         #contactModal {
             transition: opacity 0.3s ease, visibility 0.3s ease;
         }
@@ -100,9 +98,9 @@
                 <i class="fas fa-globe"></i> <span id="lang-label">English</span>
             </button>
             <button onclick="openModal()" class="px-5 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition text-sm font-bold flex gap-2 items-center">
-                <i class="far fa-envelope"></i>
-                <span class="lang-ar">تواصل مع الشركة</span>
-                <span class="lang-en hidden-lang">Contact Sales</span>
+                <i class="far fa-address-card"></i>
+                <span class="lang-ar">بيانات الشركة</span>
+                <span class="lang-en hidden-lang">Company Info</span>
             </button>
         </div>
     </nav>
@@ -123,8 +121,8 @@
         </h1>
         
         <p class="text-lg md:text-2xl text-slate-300 max-w-3xl mb-10 leading-relaxed font-medium">
-            <span class="lang-ar">في حين يتصل منافسوك بأرقام خاطئة، نظام 24Seven يضعك أمام "صناع القرار" مباشرة. <br> <span class="text-indigo-400">دقة 95%</span> مدعومة بالذكاء الاصطناعي.</span>
-            <span class="lang-en hidden-lang">While competitors call wrong numbers, 24Seven puts you directly in front of "Decision Makers". <br> <span class="text-indigo-400">95% Accuracy</span> powered by AI.</span>
+            <span class="lang-ar">نظام 24Seven يضعك أمام "صناع القرار" مباشرة بدقة <span class="text-indigo-400">95%</span> مدعومة بالذكاء الاصطناعي.</span>
+            <span class="lang-en hidden-lang">24Seven puts you directly in front of "Decision Makers" with <span class="text-indigo-400">95% Accuracy</span> powered by AI.</span>
         </p>
 
         <div class="flex flex-col md:flex-row gap-4 w-full max-w-md md:max-w-none justify-center z-10">
@@ -135,7 +133,7 @@
             </a>
             <a href="guide.html" class="btn btn-outline">
                 <i class="fas fa-play-circle text-indigo-400"></i>
-                <span class="lang-ar">كيف نحقق هذه الدقة؟</span>
+                <span class="lang-ar">كيف نحقق الدقة؟</span>
                 <span class="lang-en hidden-lang">How we get results?</span>
             </a>
         </div>
@@ -146,7 +144,7 @@
         </div>
     </header>
 
-    <section id="how-to-use" class="py-24 px-6 bg-black/20">
+    <section class="py-24 px-6 bg-black/20">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">
@@ -167,8 +165,8 @@
                         <span class="lang-en hidden-lang">1. Be Hyper-Local</span>
                     </h3>
                     <p class="text-sm text-slate-400">
-                        <span class="lang-ar">بدلاً من "القاهرة"، ابحث في "التجمع الخامس" أو "المنطقة الصناعية أكتوبر". النظام يعشق التحديد.</span>
-                        <span class="lang-en hidden-lang">Instead of "Cairo", search "Fifth Settlement" or "October Industrial Zone".</span>
+                        <span class="lang-ar">بدلاً من "القاهرة"، ابحث في "التجمع الخامس".</span>
+                        <span class="lang-en hidden-lang">Instead of "Cairo", search "Fifth Settlement".</span>
                     </p>
                 </div>
                 <div class="glass-card border-indigo-500/20">
@@ -178,8 +176,8 @@
                         <span class="lang-en hidden-lang">2. Niche Down</span>
                     </h3>
                     <p class="text-sm text-slate-400">
-                        <span class="lang-ar">بدلاً من "أطباء"، اكتب "عيادة أسنان" أو "جراحة تجميل". كلما كنت محدداً، زادت الدقة.</span>
-                        <span class="lang-en hidden-lang">Instead of "Doctors", type "Dental Clinic" or "Plastic Surgery". Specificity is key.</span>
+                        <span class="lang-ar">بدلاً من "أطباء"، اكتب "عيادة أسنان".</span>
+                        <span class="lang-en hidden-lang">Instead of "Doctors", type "Dental Clinic".</span>
                     </p>
                 </div>
                 <div class="glass-card border-green-500/30">
@@ -189,8 +187,8 @@
                         <span class="lang-en hidden-lang">3. Result = Deal</span>
                     </h3>
                     <p class="text-sm text-slate-400">
-                        <span class="lang-ar">بتطبيق المعادلة، ستحصل على بيانات "صناع قرار" وليس مجرد أرقام استقبال.</span>
-                        <span class="lang-en hidden-lang">By applying this, you get "Decision Makers" data, not just reception desk numbers.</span>
+                        <span class="lang-ar">احصل على بيانات "صناع قرار" وليس استقبال.</span>
+                        <span class="lang-en hidden-lang">Get "Decision Makers" data, not reception.</span>
                     </p>
                 </div>
             </div>
@@ -223,10 +221,6 @@
                         <br>❌ Searches with zero results are **100% FREE**.
                     </span>
                 </p>
-                <div class="flex gap-4">
-                    <span class="px-4 py-2 bg-yellow-500/20 text-yellow-400 rounded-lg text-sm font-bold border border-yellow-500/30">Pay-Per-Result</span>
-                    <span class="px-4 py-2 bg-green-500/20 text-green-400 rounded-lg text-sm font-bold border border-green-500/30">No Hidden Fees</span>
-                </div>
             </div>
         </div>
     </section>
@@ -239,7 +233,6 @@
                     <span class="lang-en hidden-lang">Features that put you ahead</span>
                 </h2>
             </div>
-
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="glass-card p-8">
                     <div class="icon-box bg-blue-500/10 text-blue-400"><i class="fas fa-bullseye"></i></div>
@@ -249,10 +242,9 @@
                     </h3>
                     <p class="text-slate-400 text-sm">
                         <span class="lang-ar">خوارزمية التقاطع الذكي تربط (النشاط + الموقع + المسمى الوظيفي) للوصول للمدير مباشرة.</span>
-                        <span class="lang-en hidden-lang">Smart intersection algorithm links (Industry + Location + Job Title) to reach the manager directly.</span>
+                        <span class="lang-en hidden-lang">Smart intersection algorithm.</span>
                     </p>
                 </div>
-
                 <div class="glass-card border-green-500/30 p-8">
                     <div class="icon-box bg-green-500/10 text-green-400"><i class="fas fa-robot"></i></div>
                     <h3 class="text-xl font-bold mb-3 text-white">
@@ -261,10 +253,9 @@
                     </h3>
                     <p class="text-slate-400 text-sm">
                         <span class="lang-ar">النظام يقوم بـ "Ping" للرقم والإيميل للتأكد من أنه يعمل حالياً قبل خصم التوكن.</span>
-                        <span class="lang-en hidden-lang">System "Pings" numbers and emails to ensure they are live before deducting any tokens.</span>
+                        <span class="lang-en hidden-lang">Real-time Ping verification.</span>
                     </p>
                 </div>
-
                 <div class="glass-card p-8">
                     <div class="icon-box bg-purple-500/10 text-purple-400"><i class="fas fa-sync-alt"></i></div>
                     <h3 class="text-xl font-bold mb-3 text-white">
@@ -273,7 +264,7 @@
                     </h3>
                     <p class="text-slate-400 text-sm">
                         <span class="lang-ar">نحن لا نملك "قاعدة بيانات" قديمة. نحن نسحب المعلومات لحظياً من المصادر الحية.</span>
-                        <span class="lang-en hidden-lang">We don't store "old databases". We fetch information instantly from live sources.</span>
+                        <span class="lang-en hidden-lang">Fresh data fetched instantly.</span>
                     </p>
                 </div>
             </div>
@@ -282,16 +273,10 @@
 
     <section class="py-24 text-center px-6 relative overflow-hidden">
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-gradient-to-b from-indigo-900/10 to-transparent -z-10"></div>
-        
         <h2 class="text-4xl font-bold mb-6">
             <span class="lang-ar">جاهز لمضاعفة مبيعاتك؟</span>
             <span class="lang-en hidden-lang">Ready to scale your sales?</span>
         </h2>
-        <p class="text-slate-400 mb-10 max-w-xl mx-auto">
-            <span class="lang-ar">ابدأ اليوم واستفد من باقات التوكن المرنة.</span>
-            <span class="lang-en hidden-lang">Start today with our flexible token packages.</span>
-        </p>
-        
         <a href="demo.html" class="inline-flex items-center gap-3 px-10 py-5 bg-[#25d366] hover:bg-[#1ebc57] text-white rounded-xl font-bold text-xl shadow-lg shadow-green-900/20 transition-all hover:scale-105">
             <i class="fab fa-whatsapp text-2xl"></i>
             <span class="lang-ar">اطلب النظام الآن</span>
@@ -299,8 +284,63 @@
         </a>
     </section>
 
-    <footer class="py-8 text-center text-slate-600 text-sm border-t border-slate-800/50 bg-[#020617]">
-        <p>© 2026 24Seven Intelligence. All rights reserved.</p>
+    <footer class="bg-[#020617] border-t border-slate-800 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12">
+            
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center text-white"><i class="fas fa-brain"></i></div>
+                    <span class="text-xl font-bold">24Seven<span class="text-indigo-400">.ai</span></span>
+                </div>
+                <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                    <span class="lang-ar">المنصة الأولى عربياً للذكاء البيعي وتوليد العملاء المحتملين بدقة عالية باستخدام تقنيات البحث المتقدم.</span>
+                    <span class="lang-en hidden-lang">The #1 Sales Intelligence platform in MENA for high-accuracy lead generation.</span>
+                </p>
+                <div class="flex gap-4">
+                    <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-indigo-600 hover:text-white transition"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-blue-500 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-sky-500 hover:text-white transition"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold mb-6">
+                    <span class="lang-ar">روابط سريعة</span>
+                    <span class="lang-en hidden-lang">Quick Links</span>
+                </h4>
+                <ul class="space-y-3 text-sm text-slate-400">
+                    <li><a href="demo.html" class="hover:text-indigo-400 transition">تفعيل النسخة التجريبية</a></li>
+                    <li><a href="guide.html" class="hover:text-indigo-400 transition">دليل الاستخدام</a></li>
+                    <li><a href="#" class="hover:text-indigo-400 transition">سياسة الخصوصية</a></li>
+                    <li><a href="#" class="hover:text-indigo-400 transition">شروط الخدمة</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold mb-6">
+                    <span class="lang-ar">معلومات التواصل</span>
+                    <span class="lang-en hidden-lang">Contact Us</span>
+                </h4>
+                <ul class="space-y-4 text-sm text-slate-400">
+                    <li class="flex items-start gap-3">
+                        <i class="fas fa-map-marker-alt text-indigo-500 mt-1"></i>
+                        <span>Cairo, Egypt - 5th Settlement,<br>Business District.</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i class="fas fa-phone-alt text-indigo-500"></i>
+                        <span class="font-mono text-white text-base">+20 112 174 8885</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i class="fas fa-envelope text-indigo-500"></i>
+                        <span>sales@24seven.ai</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="text-center text-slate-600 text-xs mt-16 pt-8 border-t border-slate-800/50">
+            <p>© 2026 24Seven Intelligence. All rights reserved.</p>
+        </div>
     </footer>
 
     <div id="contactModal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden-modal">
@@ -310,31 +350,39 @@
             <div class="text-center mb-6">
                 <div class="w-14 h-14 bg-indigo-600 rounded-full mx-auto flex items-center justify-center mb-4 text-2xl"><i class="fas fa-headset text-white"></i></div>
                 <h3 class="text-2xl font-bold mb-2">
-                    <span class="lang-ar">تواصل مع المبيعات</span>
-                    <span class="lang-en hidden-lang">Contact Sales</span>
+                    <span class="lang-ar">بيانات الشركة</span>
+                    <span class="lang-en hidden-lang">Company Info</span>
                 </h3>
                 <p class="text-sm text-slate-400">
-                    <span class="lang-ar">فريقنا جاهز للرد على استفساراتك وتجهيز خطة مخصصة لشركتك.</span>
-                    <span class="lang-en hidden-lang">Our team is ready to answer questions and build a custom plan for you.</span>
+                    <span class="lang-ar">تواصل معنا مباشرة عبر القنوات الرسمية.</span>
+                    <span class="lang-en hidden-lang">Contact us directly via official channels.</span>
                 </p>
             </div>
 
-            <div class="space-y-3">
-                <a href="mailto:support@24seven.ai" class="flex items-center gap-4 p-4 rounded-xl bg-slate-800/50 hover:bg-slate-800 border border-slate-700 transition group">
-                    <div class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center group-hover:bg-blue-500 group-hover:text-white transition"><i class="fas fa-envelope"></i></div>
+            <div class="space-y-4">
+                <div class="flex items-center gap-4 p-4 rounded-xl bg-slate-800/50 border border-slate-700">
+                    <div class="w-10 h-10 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center"><i class="fas fa-phone"></i></div>
                     <div class="text-right flex-1">
-                        <p class="text-xs text-slate-400">Email Support</p>
-                        <p class="font-bold text-white">support@24seven.ai</p>
+                        <p class="text-xs text-slate-400">Hotline</p>
+                        <p class="font-bold text-white font-mono" dir="ltr">+20 112 174 8885</p>
+                    </div>
+                </div>
+
+                <a href="https://wa.me/201121748885" target="_blank" class="flex items-center gap-4 p-4 rounded-xl bg-slate-800/50 hover:bg-green-900/20 border border-slate-700 hover:border-green-500/50 transition cursor-pointer">
+                    <div class="w-10 h-10 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center"><i class="fab fa-whatsapp text-xl"></i></div>
+                    <div class="text-right flex-1">
+                        <p class="text-xs text-slate-400">WhatsApp Support</p>
+                        <p class="font-bold text-white">Chat Now</p>
                     </div>
                 </a>
 
-                <a href="https://wa.me/201121748885" target="_blank" class="flex items-center gap-4 p-4 rounded-xl bg-slate-800/50 hover:bg-slate-800 border border-slate-700 transition group">
-                    <div class="w-10 h-10 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center group-hover:bg-green-500 group-hover:text-white transition"><i class="fab fa-whatsapp text-xl"></i></div>
+                <div class="flex items-center gap-4 p-4 rounded-xl bg-slate-800/50 border border-slate-700">
+                    <div class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center"><i class="fas fa-envelope"></i></div>
                     <div class="text-right flex-1">
-                        <p class="text-xs text-slate-400">WhatsApp Live</p>
-                        <p class="font-bold text-white">+20 112 174 8885</p>
+                        <p class="text-xs text-slate-400">Official Email</p>
+                        <p class="font-bold text-white font-mono">sales@24seven.ai</p>
                     </div>
-                </a>
+                </div>
             </div>
             
             <button onclick="closeModal()" class="w-full mt-6 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-sm font-bold text-slate-300">
@@ -345,15 +393,9 @@
     </div>
 
     <script>
-        // Modal Logic
-        function openModal() {
-            document.getElementById('contactModal').classList.remove('hidden-modal');
-        }
-        function closeModal() {
-            document.getElementById('contactModal').classList.add('hidden-modal');
-        }
+        function openModal() { document.getElementById('contactModal').classList.remove('hidden-modal'); }
+        function closeModal() { document.getElementById('contactModal').classList.add('hidden-modal'); }
 
-        // Language Logic
         function toggleLang() {
             const html = document.documentElement;
             const currentLang = html.getAttribute('lang');
