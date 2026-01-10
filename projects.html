@@ -28,13 +28,14 @@
 
         html[lang="en"] body { font-family: 'Outfit', sans-serif; }
 
-        /* Sidebar & Overlay */
+        /* Sidebar Styles */
         #sidebar {
             position: fixed; top: 0; right: -300px; width: 300px; height: 100%;
             background: var(--glass-bg); backdrop-filter: blur(20px);
             border-left: 1px solid rgba(255,255,255,0.1);
             transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 1000; padding: 2rem; display: flex; flex-direction: column;
+            z-index: 1000; padding: 2rem;
+            display: flex; flex-direction: column;
         }
         #sidebar.active { right: 0; }
         
@@ -44,11 +45,15 @@
         }
         .overlay.active { opacity: 1; visibility: visible; }
 
-        /* Modals */
-        .modal { opacity: 0; visibility: hidden; pointer-events: none; transition: 0.3s ease; }
-        .modal.active { opacity: 1; visibility: visible; pointer-events: auto; }
+        /* Modal Transitions */
+        .modal {
+            opacity: 0; visibility: hidden; pointer-events: none; transition: 0.3s ease;
+        }
+        .modal.active {
+            opacity: 1; visibility: visible; pointer-events: auto;
+        }
 
-        /* Custom Styles */
+        /* General Styles */
         .bg-glow {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
             background: 
@@ -80,14 +85,35 @@
             <h2 class="text-2xl font-bold text-white">القائمة</h2>
             <button onclick="toggleSidebar()" class="text-slate-400 hover:text-white"><i class="fas fa-times text-2xl"></i></button>
         </div>
+        
         <ul class="space-y-6 flex-1">
-            <li><a href="index.html" class="flex items-center gap-3 text-slate-300 hover:text-indigo-400 text-lg transition"><i class="fas fa-home w-6"></i> الرئيسية</a></li>
-            <li><button onclick="openRequestModal(); toggleSidebar();" class="flex items-center gap-3 text-slate-300 hover:text-indigo-400 text-lg transition w-full text-right"><i class="fas fa-rocket w-6"></i> طلب تجربة النظام</button></li>
-            <li><a href="guide.html" class="flex items-center gap-3 text-slate-300 hover:text-indigo-400 text-lg transition"><i class="fas fa-book-open w-6"></i> دليل الاستخدام</a></li>
-            <li><button onclick="openMsgModal(); toggleSidebar();" class="flex items-center gap-3 text-slate-300 hover:text-indigo-400 text-lg transition w-full text-right"><i class="fas fa-envelope w-6"></i> <span class="font-mono">info@24sevenAi.com</span></button></li>
+            <li>
+                <a href="index.html" class="flex items-center gap-3 text-slate-300 hover:text-indigo-400 text-lg transition">
+                    <i class="fas fa-home w-6"></i> الرئيسية
+                </a>
+            </li>
+            <li>
+                <button onclick="openRequestModal(); toggleSidebar();" class="flex items-center gap-3 text-slate-300 hover:text-indigo-400 text-lg transition w-full text-right">
+                    <i class="fas fa-rocket w-6"></i> طلب تجربة النظام
+                </button>
+            </li>
+            <li>
+                <a href="guide.html" class="flex items-center gap-3 text-slate-300 hover:text-indigo-400 text-lg transition">
+                    <i class="fas fa-book-open w-6"></i> دليل الاستخدام
+                </a>
+            </li>
+            <li>
+                <button onclick="openMsgModal(); toggleSidebar();" class="flex items-center gap-3 text-slate-300 hover:text-indigo-400 text-lg transition w-full text-right">
+                    <i class="fas fa-envelope w-6"></i> 
+                    <span class="font-mono">info@24sevenAi.com</span>
+                </button>
+            </li>
         </ul>
+
         <div class="pt-8 border-t border-slate-700">
-            <button onclick="toggleLang()" class="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-slate-600 hover:bg-slate-800 transition text-sm font-bold text-slate-300"><i class="fas fa-globe"></i> <span id="lang-label-side">English</span></button>
+            <button onclick="toggleLang()" class="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-slate-600 hover:bg-slate-800 transition text-sm font-bold text-slate-300">
+                <i class="fas fa-globe"></i> <span id="lang-label-side">English</span>
+            </button>
         </div>
     </aside>
 
@@ -97,13 +123,18 @@
             <span class="lang-ar">الرئيسية</span>
             <span class="lang-en hidden-lang">Home</span>
         </a>
+        
         <div class="flex items-center gap-4">
-            <button onclick="openRequestModal()" class="hidden md:block px-5 py-2 bg-indigo-600 hover:bg-indigo-700 rounded-lg font-bold transition text-white text-sm">ابدأ مشروعك</button>
-            <button onclick="toggleSidebar()" class="p-2 text-white text-2xl hover:text-indigo-400 transition"><i class="fas fa-bars"></i></button>
+            <button onclick="openRequestModal()" class="hidden md:block px-5 py-2 bg-indigo-600 hover:bg-indigo-700 rounded-lg font-bold transition text-white text-sm">
+                ابدأ مشروعك
+            </button>
+            <button onclick="toggleSidebar()" class="p-2 text-white text-2xl hover:text-indigo-400 transition">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </nav>
 
-    <header class="pt-32 pb-16 px-6 text-center">
+    <header class="pt-36 pb-16 px-6 text-center">
         <h1 class="text-4xl md:text-6xl font-black mb-6">
             <span class="lang-ar">نحن لا نكتب "أكواداً".. <br> نحن نبني <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">إمبراطوريات رقمية</span>.</span>
             <span class="lang-en hidden-lang">We don't just write code.. <br> We build <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">Digital Empires</span>.</span>
@@ -227,8 +258,9 @@
         </div>
 
         <div class="max-w-3xl mx-auto text-center mt-20 p-10 glass-card border border-indigo-500/30">
-            <h2 class="text-3xl font-bold mb-4">هل لديك فكرة مشروع مشابه؟</h2>
+            <h2 class="text-3xl font-bold mb-4 text-white">هل لديك فكرة مشروع مشابه؟</h2>
             <p class="text-slate-400 mb-8">نحن لا نقدم "قوالب جاهزة". نحن نبني حلولاً مفصلة خصيصاً لتحديات عملك.</p>
+            
             <button onclick="openMsgModal()" class="inline-flex items-center gap-3 px-8 py-4 bg-white text-indigo-900 rounded-xl font-bold text-lg hover:bg-slate-200 transition shadow-lg">
                 <i class="fas fa-comment-dots"></i>
                 ناقش فكرتك معنا
@@ -268,6 +300,32 @@
             <p>© 2026 24Seven Intelligence. All rights reserved.</p>
         </div>
     </footer>
+
+    <div id="contactModal" class="modal fixed inset-0 z-[1100] flex items-center justify-center p-4">
+        <div class="glass-card w-full max-w-md p-8 relative transform transition-all scale-100 bg-slate-900/95 border border-slate-700 shadow-2xl">
+            <button onclick="closeAllModals()" class="absolute top-4 right-4 text-slate-400 hover:text-white"><i class="fas fa-times text-xl"></i></button>
+            <div class="text-center mb-6">
+                <h3 class="text-2xl font-bold mb-2 text-white">بيانات الشركة</h3>
+                <p class="text-sm text-slate-400">قنوات التواصل الرسمية</p>
+            </div>
+            <div class="space-y-4">
+                <div class="flex items-center gap-4 p-4 rounded-xl bg-slate-800/50 border border-slate-700">
+                    <div class="w-10 h-10 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center"><i class="fas fa-phone"></i></div>
+                    <div class="text-right flex-1">
+                        <p class="text-xs text-slate-400">Hotline</p>
+                        <p class="font-bold text-white font-mono" dir="ltr">+20 112 174 8885</p>
+                    </div>
+                </div>
+                <a href="https://wa.me/201121748885" target="_blank" class="flex items-center gap-4 p-4 rounded-xl bg-slate-800/50 hover:bg-green-900/20 border border-slate-700 hover:border-green-500/50 transition">
+                    <div class="w-10 h-10 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center"><i class="fab fa-whatsapp text-xl"></i></div>
+                    <div class="text-right flex-1">
+                        <p class="text-xs text-slate-400">WhatsApp</p>
+                        <p class="font-bold text-white">Chat Support</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
 
     <div id="msgModal" class="modal fixed inset-0 z-[1100] flex items-center justify-center p-4">
         <div class="glass-card w-full max-w-lg p-8 relative transform transition-all scale-100 bg-slate-900/95 border border-slate-700 shadow-2xl">
@@ -330,6 +388,11 @@
             document.querySelectorAll('.modal').forEach(m => m.classList.remove('active'));
             document.getElementById('overlay').classList.remove('active');
             document.getElementById('sidebar').classList.remove('active');
+        }
+        function openModal() {
+            closeAllModals();
+            document.getElementById('overlay').classList.add('active');
+            document.getElementById('contactModal').classList.add('active');
         }
         function openMsgModal() {
             closeAllModals();
