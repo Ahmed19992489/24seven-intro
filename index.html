@@ -14,7 +14,7 @@
         :root {
             --bg-dark: #0f172a;
             --primary: #6366f1;
-            --glass-bg: rgba(30, 41, 59, 0.8);
+            --glass-bg: rgba(30, 41, 59, 0.95); /* Sidebar needs higher opacity */
             --gradient-main: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
         }
 
@@ -28,6 +28,24 @@
 
         html[lang="en"] body { font-family: 'Outfit', sans-serif; }
 
+        /* Sidebar Styles */
+        #sidebar {
+            position: fixed; top: 0; right: -300px; width: 300px; height: 100%;
+            background: var(--glass-bg); backdrop-filter: blur(20px);
+            border-left: 1px solid rgba(255,255,255,0.1);
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1000; padding: 2rem;
+            display: flex; flex-direction: column;
+        }
+        #sidebar.active { right: 0; }
+        
+        .overlay {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.6);
+            z-index: 999; opacity: 0; visibility: hidden; transition: 0.3s;
+        }
+        .overlay.active { opacity: 1; visibility: visible; }
+
+        /* Other Styles */
         .bg-glow {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
             background: 
@@ -42,16 +60,11 @@
         }
 
         .glass-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
+            background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 20px;
             transition: transform 0.3s ease, border-color 0.3s ease;
         }
-        .glass-card:hover {
-            border-color: rgba(99, 102, 241, 0.5);
-            transform: translateY(-5px);
-        }
+        .glass-card:hover { border-color: rgba(99, 102, 241, 0.5); transform: translateY(-5px); }
 
         .btn {
             display: inline-flex; align-items: center; justify-content: center; gap: 10px;
@@ -67,25 +80,50 @@
         .btn-outline { border: 1px solid rgba(255,255,255,0.2); color: white; }
         .btn-outline:hover { background: rgba(255,255,255,0.05); border-color: white; }
 
-        .icon-box {
-            width: 60px; height: 60px; border-radius: 15px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.5rem; margin-bottom: 20px;
-        }
-
-        #contactModal {
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
-        #contactModal.hidden-modal {
-            opacity: 0; visibility: hidden; pointer-events: none;
-        }
-
         .hidden-lang { display: none !important; }
     </style>
 </head>
 <body class="selection:bg-indigo-500 selection:text-white">
 
     <div class="bg-glow"></div>
+    <div id="overlay" class="overlay" onclick="toggleSidebar()"></div>
+
+    <aside id="sidebar">
+        <div class="flex justify-between items-center mb-10">
+            <h2 class="text-2xl font-bold text-white">القائمة</h2>
+            <button onclick="toggleSidebar()" class="text-slate-400 hover:text-white"><i class="fas fa-times text-2xl"></i></button>
+        </div>
+        
+        <ul class="space-y-6 flex-1">
+            <li>
+                <a href="#projects" onclick="toggleSidebar()" class="flex items-center gap-3 text-slate-300 hover:text-indigo-400 text-lg transition">
+                    <i class="fas fa-layer-group w-6"></i> مشاريعنا
+                </a>
+            </li>
+            <li>
+                <a href="demo.html" onclick="toggleSidebar()" class="flex items-center gap-3 text-slate-300 hover:text-indigo-400 text-lg transition">
+                    <i class="fas fa-rocket w-6"></i> تجربة النظام
+                </a>
+            </li>
+            <li>
+                <a href="guide.html" onclick="toggleSidebar()" class="flex items-center gap-3 text-slate-300 hover:text-indigo-400 text-lg transition">
+                    <i class="fas fa-book-open w-6"></i> دليل الاستخدام
+                </a>
+            </li>
+            <li>
+                <a href="mailto:kreta20161@gmail.com" class="flex items-center gap-3 text-slate-300 hover:text-indigo-400 text-lg transition">
+                    <i class="fas fa-envelope w-6"></i> 
+                    <span class="font-mono">info@24sevenAi.com</span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="pt-8 border-t border-slate-700">
+            <button onclick="toggleLang()" class="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-slate-600 hover:bg-slate-800 transition text-sm font-bold text-slate-300">
+                <i class="fas fa-globe"></i> <span id="lang-label-side">English</span>
+            </button>
+        </div>
+    </aside>
 
     <nav class="fixed top-0 w-full z-50 backdrop-blur-md border-b border-white/5 py-4 px-6 flex justify-between items-center">
         <div class="flex items-center gap-2">
@@ -93,20 +131,14 @@
             <span class="text-xl font-bold tracking-tight">24Seven<span class="text-indigo-400">.ai</span></span>
         </div>
         
-        <div class="flex items-center gap-3">
-            <button onclick="toggleLang()" class="px-3 py-1.5 rounded-lg border border-white/10 hover:bg-white/5 text-xs font-bold text-slate-300 transition flex gap-2 items-center">
-                <i class="fas fa-globe"></i> <span id="lang-label">English</span>
-            </button>
-            <button onclick="openModal()" class="px-5 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition text-sm font-bold flex gap-2 items-center">
-                <i class="far fa-address-card"></i>
-                <span class="lang-ar">بيانات الشركة</span>
-                <span class="lang-en hidden-lang">Company Info</span>
+        <div class="flex items-center gap-4">
+            <button onclick="toggleSidebar()" class="p-2 text-white text-2xl hover:text-indigo-400 transition">
+                <i class="fas fa-bars"></i>
             </button>
         </div>
     </nav>
 
     <header class="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-28 pb-12 relative overflow-hidden">
-        
         <div class="mb-6 animate-fade-in-up">
             <span class="px-4 py-2 rounded-full bg-red-500/10 border border-red-500/20 text-red-300 text-sm font-bold inline-flex items-center gap-2">
                 <i class="fas fa-robot"></i>
@@ -158,91 +190,33 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                
                 <div class="glass-card p-8 group hover:bg-slate-800/50 transition">
                     <div class="flex justify-between mb-4">
                         <div class="w-12 h-12 bg-blue-600/20 text-blue-500 rounded-lg flex items-center justify-center text-2xl"><i class="fab fa-facebook-f"></i></div>
                         <span class="text-xs bg-blue-900/50 text-blue-300 px-2 py-1 rounded h-fit">Marketing</span>
                     </div>
-                    <h3 class="text-xl font-bold mb-2 text-white">Social Media Autopilot (A-Z)</h3>
-                    <p class="text-sm text-slate-400 mb-4">
-                        نظام متكامل يدير (FB, Insta, LinkedIn). يصمم الصور، يكتب المحتوى، ينشر آلياً، ويبحث في الجروبات المستهدفة، ويرد على العملاء ويقفل الصفقات في Dashboard موحدة.
-                    </p>
-                    <div class="h-1 w-full bg-slate-700 rounded overflow-hidden">
-                        <div class="h-full bg-blue-500 w-3/4"></div>
-                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-white">Social Media Autopilot</h3>
+                    <p class="text-sm text-slate-400 mb-4">نظام متكامل يدير (FB, Insta, LinkedIn). يصمم الصور، يكتب المحتوى، ينشر آلياً، ويرد على العملاء.</p>
+                    <div class="h-1 w-full bg-slate-700 rounded overflow-hidden"><div class="h-full bg-blue-500 w-3/4"></div></div>
                 </div>
-
                 <div class="glass-card p-8 group hover:bg-slate-800/50 transition">
                     <div class="flex justify-between mb-4">
                         <div class="w-12 h-12 bg-yellow-600/20 text-yellow-500 rounded-lg flex items-center justify-center text-2xl"><i class="fas fa-cogs"></i></div>
                         <span class="text-xs bg-yellow-900/50 text-yellow-300 px-2 py-1 rounded h-fit">Operations</span>
                     </div>
                     <h3 class="text-xl font-bold mb-2 text-white">ERP & Automation Bots</h3>
-                    <p class="text-sm text-slate-400 mb-4">
-                        منظومة إدارة كاملة (من الموظف للمدير). تدير التشغيل، الحسابات، الأسطول (مثل الليموزين)، وترسل تقارير يومية للمدير على واتساب آلياً.
-                    </p>
-                    <div class="h-1 w-full bg-slate-700 rounded overflow-hidden">
-                        <div class="h-full bg-yellow-500 w-full"></div>
-                    </div>
+                    <p class="text-sm text-slate-400 mb-4">منظومة إدارة كاملة (ليموزين، مخازن). تدير التشغيل، الحسابات، وترسل تقارير واتساب آلياً.</p>
+                    <div class="h-1 w-full bg-slate-700 rounded overflow-hidden"><div class="h-full bg-yellow-500 w-full"></div></div>
                 </div>
-
                 <div class="glass-card p-8 group hover:bg-slate-800/50 transition border border-indigo-500/30">
                     <div class="flex justify-between mb-4">
                         <div class="w-12 h-12 bg-indigo-600/20 text-indigo-500 rounded-lg flex items-center justify-center text-2xl"><i class="fas fa-search-location"></i></div>
                         <span class="text-xs bg-indigo-900/50 text-indigo-300 px-2 py-1 rounded h-fit">Intelligence</span>
                     </div>
                     <h3 class="text-xl font-bold mb-2 text-white">Search Intelligence Engine</h3>
-                    <p class="text-sm text-slate-400 mb-4">
-                        مشروعنا الحالي. بحث دقيق بالاسم والخريطة والنشاط. يستخرج بيانات صناع القرار الحية ويتحقق منها بالذكاء الاصطناعي (95% دقة).
-                    </p>
-                    <div class="h-1 w-full bg-slate-700 rounded overflow-hidden">
-                        <div class="h-full bg-indigo-500 w-1/2"></div>
-                    </div>
+                    <p class="text-sm text-slate-400 mb-4">مشروعنا الحالي. بحث دقيق بالاسم والخريطة. يستخرج بيانات صناع القرار ويتحقق منها (95% دقة).</p>
+                    <div class="h-1 w-full bg-slate-700 rounded overflow-hidden"><div class="h-full bg-indigo-500 w-1/2"></div></div>
                 </div>
-
-                <div class="glass-card p-8 group hover:bg-slate-800/50 transition">
-                    <div class="flex justify-between mb-4">
-                        <div class="w-12 h-12 bg-green-600/20 text-green-500 rounded-lg flex items-center justify-center text-2xl"><i class="fab fa-whatsapp"></i></div>
-                        <span class="text-xs bg-green-900/50 text-green-300 px-2 py-1 rounded h-fit">Mining</span>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2 text-white">Community Mining Bots</h3>
-                    <p class="text-sm text-slate-400 mb-4">
-                        بوتات متخصصة في البحث داخل جروبات واتساب وفيسبوك، استخراج العملاء المهتمين، النشر الآلي، وإرسال تقارير تفاعلية.
-                    </p>
-                    <div class="h-1 w-full bg-slate-700 rounded overflow-hidden">
-                        <div class="h-full bg-green-500 w-4/5"></div>
-                    </div>
-                </div>
-
-                <div class="glass-card p-8 group hover:bg-slate-800/50 transition">
-                    <div class="flex justify-between mb-4">
-                        <div class="w-12 h-12 bg-purple-600/20 text-purple-500 rounded-lg flex items-center justify-center text-2xl"><i class="fas fa-chart-pie"></i></div>
-                        <span class="text-xs bg-purple-900/50 text-purple-300 px-2 py-1 rounded h-fit">Sales</span>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2 text-white">Full Custom CRM</h3>
-                    <p class="text-sm text-slate-400 mb-4">
-                        نظام إدارة علاقات عملاء كامل (CRM) يربط كل هذه الأدوات ببعضها. يسجل كل تفاعل، ويقترح الخطوة التالية لمضاعفة المبيعات.
-                    </p>
-                    <div class="h-1 w-full bg-slate-700 rounded overflow-hidden">
-                        <div class="h-full bg-purple-500 w-2/3"></div>
-                    </div>
-                </div>
-
-                <div class="glass-card p-8 group hover:bg-slate-800/50 transition">
-                    <div class="flex justify-between mb-4">
-                        <div class="w-12 h-12 bg-red-600/20 text-red-500 rounded-lg flex items-center justify-center text-2xl"><i class="fas fa-shield-alt"></i></div>
-                        <span class="text-xs bg-red-900/50 text-red-300 px-2 py-1 rounded h-fit">IoT</span>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2 text-white">Viber Cloud Security</h3>
-                    <p class="text-sm text-slate-400 mb-4">
-                        مشروع أتمتة بوابات الأمن. ربطنا الهاردوير بالكلاود للتحكم في الدخول والخروج وتسجيل البيانات لحظياً.
-                    </p>
-                    <div class="h-1 w-full bg-slate-700 rounded overflow-hidden">
-                        <div class="h-full bg-red-500 w-full"></div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
@@ -321,45 +295,27 @@
         </div>
     </footer>
 
-    <div id="contactModal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden-modal">
-        <div class="glass-card w-full max-w-md p-8 relative transform transition-all scale-100">
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white"><i class="fas fa-times text-xl"></i></button>
-            <div class="text-center mb-6">
-                <h3 class="text-2xl font-bold mb-2 text-white">بيانات الشركة</h3>
-                <p class="text-sm text-slate-400">تواصل معنا مباشرة.</p>
-            </div>
-            <div class="space-y-4">
-                <a href="https://wa.me/201121748885" target="_blank" class="flex items-center gap-4 p-4 rounded-xl bg-slate-800/50 hover:bg-green-900/20 border border-slate-700 transition">
-                    <div class="w-10 h-10 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center"><i class="fab fa-whatsapp text-xl"></i></div>
-                    <div class="text-right flex-1">
-                        <p class="text-xs text-slate-400">WhatsApp</p>
-                        <p class="font-bold text-white">+20 112 174 8885</p>
-                    </div>
-                </a>
-                <a href="mailto:kreta20161@gmail.com" class="flex items-center gap-4 p-4 rounded-xl bg-slate-800/50 border border-slate-700 hover:bg-slate-800 transition">
-                    <div class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center"><i class="fas fa-envelope"></i></div>
-                    <div class="text-right flex-1">
-                        <p class="text-xs text-slate-400">Email</p>
-                        <p class="font-bold text-white font-mono">info@24sevenAi.com</p>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
-
     <script>
-        function openModal() { document.getElementById('contactModal').classList.remove('hidden-modal'); }
-        function closeModal() { document.getElementById('contactModal').classList.add('hidden-modal'); }
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
         function toggleLang() {
             const html = document.documentElement;
             const currentLang = html.getAttribute('lang');
             const newLang = currentLang === 'ar' ? 'en' : 'ar';
-            const langLabel = document.getElementById('lang-label');
+            const langLabelSide = document.getElementById('lang-label-side');
+            
             html.setAttribute('lang', newLang);
             html.setAttribute('dir', newLang === 'ar' ? 'rtl' : 'ltr');
-            langLabel.innerText = newLang === 'ar' ? 'English' : 'العربية';
+            langLabelSide.innerText = newLang === 'ar' ? 'English' : 'العربية';
+            
             const arElements = document.querySelectorAll('.lang-ar');
             const enElements = document.querySelectorAll('.lang-en');
+            
             if (newLang === 'en') {
                 arElements.forEach(el => el.classList.add('hidden-lang'));
                 enElements.forEach(el => el.classList.remove('hidden-lang'));
