@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>سابقة الأعمال | 24Seven Intelligence</title>
-    <meta name="description" content="دراسات حالة لمشاريع برمجية حقيقية: أنظمة ERP، بوتات ذكية، كاسر حماية Cloudflare، وحلول IoT.">
+    <meta name="description" content="Case studies of real software projects: ERP systems, Smart Bots, Cloudflare Bypassing, and IoT solutions.">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
@@ -82,51 +82,60 @@
 
     <aside id="sidebar">
         <div class="flex justify-between items-center mb-10">
-            <h2 class="text-2xl font-bold text-white">القائمة</h2>
+            <h2 class="text-2xl font-bold text-white">
+                <span class="lang-ar">القائمة</span>
+                <span class="lang-en hidden-lang">Menu</span>
+            </h2>
             <button onclick="toggleSidebar()" class="text-slate-400 hover:text-white"><i class="fas fa-times text-2xl"></i></button>
         </div>
         
         <ul class="space-y-6 flex-1">
             <li>
                 <a href="index.html" class="flex items-center gap-3 text-slate-300 hover:text-indigo-400 text-lg transition">
-                    <i class="fas fa-home w-6"></i> الرئيسية
+                    <i class="fas fa-home w-6"></i> 
+                    <span class="lang-ar">الرئيسية</span>
+                    <span class="lang-en hidden-lang">Home</span>
                 </a>
             </li>
             <li>
-                <button onclick="openRequestModal(); toggleSidebar();" class="flex items-center gap-3 text-slate-300 hover:text-indigo-400 text-lg transition w-full text-right">
-                    <i class="fas fa-rocket w-6"></i> طلب تجربة النظام
+                <button onclick="openRequestModal(); toggleSidebar();" class="flex items-center gap-3 text-slate-300 hover:text-indigo-400 text-lg transition w-full text-right ltr:text-left">
+                    <i class="fas fa-rocket w-6"></i> 
+                    <span class="lang-ar">طلب تجربة النظام</span>
+                    <span class="lang-en hidden-lang">Request Access</span>
                 </button>
             </li>
             <li>
                 <a href="guide.html" class="flex items-center gap-3 text-slate-300 hover:text-indigo-400 text-lg transition">
-                    <i class="fas fa-book-open w-6"></i> دليل الاستخدام
+                    <i class="fas fa-book-open w-6"></i> 
+                    <span class="lang-ar">دليل الاستخدام</span>
+                    <span class="lang-en hidden-lang">User Guide</span>
                 </a>
             </li>
             <li>
-                <button onclick="openMsgModal(); toggleSidebar();" class="flex items-center gap-3 text-slate-300 hover:text-indigo-400 text-lg transition w-full text-right">
+                <button onclick="openMsgModal(); toggleSidebar();" class="flex items-center gap-3 text-slate-300 hover:text-indigo-400 text-lg transition w-full text-right ltr:text-left">
                     <i class="fas fa-envelope w-6"></i> 
                     <span class="font-mono">info@24sevenAi.com</span>
                 </button>
             </li>
         </ul>
-
-        <div class="pt-8 border-t border-slate-700">
-            <button onclick="toggleLang()" class="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-slate-600 hover:bg-slate-800 transition text-sm font-bold text-slate-300">
-                <i class="fas fa-globe"></i> <span id="lang-label-side">English</span>
-            </button>
-        </div>
     </aside>
 
     <nav class="fixed top-0 w-full z-50 backdrop-blur-md border-b border-white/5 py-4 px-6 flex justify-between items-center">
         <a href="index.html" class="flex items-center gap-2 text-xl font-bold text-slate-300 hover:text-white transition">
-            <i class="fas fa-arrow-right text-indigo-400"></i>
+            <i class="fas fa-arrow-right text-indigo-400 rtl:rotate-0 ltr:rotate-180"></i>
             <span class="lang-ar">الرئيسية</span>
             <span class="lang-en hidden-lang">Home</span>
         </a>
         
-        <div class="flex items-center gap-4">
+        <div class="flex items-center gap-3">
+            <button onclick="toggleLang()" class="flex items-center gap-2 px-3 py-2 bg-slate-800/50 hover:bg-slate-700 border border-slate-700 rounded-lg text-slate-300 hover:text-white transition text-sm font-bold">
+                <i class="fas fa-globe"></i> 
+                <span id="lang-label-nav">English</span>
+            </button>
+
             <button onclick="openRequestModal()" class="hidden md:block px-5 py-2 bg-indigo-600 hover:bg-indigo-700 rounded-lg font-bold transition text-white text-sm">
-                ابدأ مشروعك
+                <span class="lang-ar">ابدأ مشروعك</span>
+                <span class="lang-en hidden-lang">Start Project</span>
             </button>
             <button onclick="toggleSidebar()" class="p-2 text-white text-2xl hover:text-indigo-400 transition">
                 <i class="fas fa-bars"></i>
@@ -143,7 +152,8 @@
             <span class="lang-en hidden-lang">We Build <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">Solutions</span>.. Not Just Software.</span>
         </h1>
         <p class="text-slate-400 max-w-3xl mx-auto text-lg leading-relaxed">
-            استعرض سابقة أعمالنا التقنية. لكل مشروع قصة: "مشكلة عميل" حولناها إلى "نظام ذكي" يوفر الوقت ويضاعف الأرباح.
+            <span class="lang-ar">استعرض سابقة أعمالنا التقنية. لكل مشروع قصة: "مشكلة عميل" حولناها إلى "نظام ذكي" يوفر الوقت ويضاعف الأرباح.</span>
+            <span class="lang-en hidden-lang">Explore our technical portfolio. Every project has a story: A "Customer Problem" we turned into a "Smart System" that saves time and doubles profits.</span>
         </p>
     </header>
 
@@ -160,13 +170,35 @@
                 <div class="p-8 md:w-3/5 flex flex-col justify-center">
                     <h3 class="text-2xl font-bold mb-4 text-white">Omni-Channel Limo ERP</h3>
                     <div class="space-y-4 text-sm text-slate-300">
-                        <div class="flex gap-3"><div class="min-w-[24px] text-red-400"><i class="fas fa-times-circle"></i></div><p><strong class="text-white">المشكلة:</strong> تشتت حجوزات الشركة بين واتساب وماسنجر، وضياع الرحلات.</p></div>
-                        <div class="flex gap-3"><div class="min-w-[24px] text-green-400"><i class="fas fa-check-circle"></i></div><p><strong class="text-white">الحل:</strong> نظام مركزي يربط جميع القنوات في لوحة تحكم واحدة، مع تطبيق للسائقين ونظام مالي آلي.</p></div>
-                        <div class="flex gap-3"><div class="min-w-[24px] text-yellow-400"><i class="fas fa-star"></i></div><p><strong class="text-white">النتيجة:</strong> زيادة كفاءة التشغيل 300%.</p></div>
+                        <div class="flex gap-3">
+                            <div class="min-w-[24px] text-red-400"><i class="fas fa-times-circle"></i></div>
+                            <p>
+                                <strong class="text-white"><span class="lang-ar">المشكلة:</span><span class="lang-en hidden-lang">Problem:</span></strong> 
+                                <span class="lang-ar">تشتت حجوزات الشركة بين واتساب وماسنجر، وضياع الرحلات.</span>
+                                <span class="lang-en hidden-lang">Scattered bookings between WhatsApp and Messenger, leading to lost trips.</span>
+                            </p>
+                        </div>
+                        <div class="flex gap-3">
+                            <div class="min-w-[24px] text-green-400"><i class="fas fa-check-circle"></i></div>
+                            <p>
+                                <strong class="text-white"><span class="lang-ar">الحل:</span><span class="lang-en hidden-lang">Solution:</span></strong> 
+                                <span class="lang-ar">نظام مركزي يربط جميع القنوات في لوحة تحكم واحدة، مع تطبيق للسائقين ونظام مالي آلي.</span>
+                                <span class="lang-en hidden-lang">Centralized system unifying all channels into one dashboard, with a driver app and automated finance system.</span>
+                            </p>
+                        </div>
+                        <div class="flex gap-3">
+                            <div class="min-w-[24px] text-yellow-400"><i class="fas fa-star"></i></div>
+                            <p>
+                                <strong class="text-white"><span class="lang-ar">النتيجة:</span><span class="lang-en hidden-lang">Result:</span></strong> 
+                                <span class="lang-ar">زيادة كفاءة التشغيل 300%.</span>
+                                <span class="lang-en hidden-lang">300% increase in operational efficiency.</span>
+                            </p>
+                        </div>
                     </div>
                     <div class="mt-6 pt-6 border-t border-slate-700/50 flex flex-wrap gap-2">
                         <span class="px-3 py-1 bg-slate-800 rounded text-xs text-slate-400">Node.js</span>
                         <span class="px-3 py-1 bg-slate-800 rounded text-xs text-slate-400">Supabase</span>
+                        <span class="px-3 py-1 bg-slate-800 rounded text-xs text-slate-400">Socket.io</span>
                     </div>
                 </div>
             </div>
@@ -181,8 +213,22 @@
                 <div class="p-8 md:w-3/5 flex flex-col justify-center">
                     <h3 class="text-2xl font-bold mb-4 text-white">Sales Intelligence Ecosystem</h3>
                     <div class="space-y-4 text-sm text-slate-300">
-                        <div class="flex gap-3"><div class="min-w-[24px] text-red-400"><i class="fas fa-times-circle"></i></div><p><strong class="text-white">المشكلة:</strong> صعوبة الوصول لـ "صناع القرار" والاعتماد على البحث اليدوي.</p></div>
-                        <div class="flex gap-3"><div class="min-w-[24px] text-green-400"><i class="fas fa-check-circle"></i></div><p><strong class="text-white">الحل:</strong> خط إنتاج بيانات يبدأ بمسح جوجل مابس، ثم صيد المسؤولين من LinkedIn، تنظيف البيانات، وإرسال إيميلات ذكية.</p></div>
+                        <div class="flex gap-3">
+                            <div class="min-w-[24px] text-red-400"><i class="fas fa-times-circle"></i></div>
+                            <p>
+                                <strong class="text-white"><span class="lang-ar">المشكلة:</span><span class="lang-en hidden-lang">Problem:</span></strong>
+                                <span class="lang-ar">صعوبة الوصول لـ "صناع القرار" والاعتماد على البحث اليدوي.</span>
+                                <span class="lang-en hidden-lang">Difficulty reaching "Decision Makers" and reliance on slow manual search.</span>
+                            </p>
+                        </div>
+                        <div class="flex gap-3">
+                            <div class="min-w-[24px] text-green-400"><i class="fas fa-check-circle"></i></div>
+                            <p>
+                                <strong class="text-white"><span class="lang-ar">الحل:</span><span class="lang-en hidden-lang">Solution:</span></strong>
+                                <span class="lang-ar">خط إنتاج بيانات يبدأ بمسح جوجل مابس، ثم صيد المسؤولين من LinkedIn، تنظيف البيانات، وإرسال إيميلات ذكية.</span>
+                                <span class="lang-en hidden-lang">Data pipeline scraping Google Maps, hunting LinkedIn decision makers, cleaning data, and auto-sending smart emails.</span>
+                            </p>
+                        </div>
                     </div>
                     <div class="mt-6 pt-6 border-t border-slate-700/50 flex flex-wrap gap-2">
                         <span class="px-3 py-1 bg-slate-800 rounded text-xs text-slate-400">Python Selenium</span>
@@ -195,18 +241,31 @@
                 <div class="md:w-2/5 bg-slate-800 relative min-h-[300px]">
                     <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2070&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition duration-700" alt="Cyber Security">
                     <div class="absolute bottom-0 left-0 p-6 bg-gradient-to-t from-black/90 to-transparent w-full">
-                        <span class="project-tag bg-red-600 text-white">Anti-Bot Bypass</span>
+                        <span class="project-tag bg-red-600 text-white">Advanced Automation</span>
                     </div>
                 </div>
                 <div class="p-8 md:w-3/5 flex flex-col justify-center">
                     <h3 class="text-2xl font-bold mb-4 text-white">FireWall Breaker (Cloudflare Bypass)</h3>
                     <div class="space-y-4 text-sm text-slate-300">
-                        <div class="flex gap-3"><div class="min-w-[24px] text-red-400"><i class="fas fa-times-circle"></i></div><p><strong class="text-white">المشكلة:</strong> توقف برامج الأتمتة (Bots) بسبب أنظمة الحماية المعقدة مثل (Cloudflare Turnstile) التي تطلب التأكد أنك "إنسان".</p></div>
-                        <div class="flex gap-3"><div class="min-w-[24px] text-green-400"><i class="fas fa-check-circle"></i></div><p><strong class="text-white">الحل:</strong> نظام محاكاة ذكي (Undetected Browser) يقوم بتقليد السلوك البشري (حركة الماوس، الانتظار العشوائي) لتخطي الكابتشا والدخول للموقع دون حظر.</p></div>
+                        <div class="flex gap-3">
+                            <div class="min-w-[24px] text-red-400"><i class="fas fa-times-circle"></i></div>
+                            <p>
+                                <strong class="text-white"><span class="lang-ar">المشكلة:</span><span class="lang-en hidden-lang">Problem:</span></strong>
+                                <span class="lang-ar">توقف برامج الأتمتة (Bots) بسبب أنظمة الحماية المعقدة مثل (Cloudflare Turnstile).</span>
+                                <span class="lang-en hidden-lang">Bots stopping due to complex security systems like Cloudflare Turnstile.</span>
+                            </p>
+                        </div>
+                        <div class="flex gap-3">
+                            <div class="min-w-[24px] text-green-400"><i class="fas fa-check-circle"></i></div>
+                            <p>
+                                <strong class="text-white"><span class="lang-ar">الحل:</span><span class="lang-en hidden-lang">Solution:</span></strong>
+                                <span class="lang-ar">نظام محاكاة ذكي (Undetected Browser) يقوم بتقليد السلوك البشري لتخطي الكابتشا والدخول للموقع دون حظر.</span>
+                                <span class="lang-en hidden-lang">Smart emulation system (Undetected Browser) mimicking human behavior to bypass captchas and access sites without blocks.</span>
+                            </p>
+                        </div>
                     </div>
                     <div class="mt-6 pt-6 border-t border-slate-700/50 flex flex-wrap gap-2">
                         <span class="px-3 py-1 bg-slate-800 rounded text-xs text-slate-400">Python</span>
-                        <span class="px-3 py-1 bg-slate-800 rounded text-xs text-slate-400">Undetected Chromedriver</span>
                         <span class="px-3 py-1 bg-slate-800 rounded text-xs text-slate-400">Anti-Detection</span>
                     </div>
                 </div>
@@ -222,8 +281,22 @@
                 <div class="p-8 md:w-3/5 flex flex-col justify-center">
                     <h3 class="text-2xl font-bold mb-4 text-white">Fleet Commander (Telegram ERP)</h3>
                     <div class="space-y-4 text-sm text-slate-300">
-                        <div class="flex gap-3"><div class="min-w-[24px] text-red-400"><i class="fas fa-times-circle"></i></div><p><strong class="text-white">المشكلة:</strong> إدارة السائقين والمصاريف اليومية عبر الهاتف تسبب أخطاء.</p></div>
-                        <div class="flex gap-3"><div class="min-w-[24px] text-green-400"><i class="fas fa-check-circle"></i></div><p><strong class="text-white">الحل:</strong> نظام ERP كامل يعمل داخل "تيليجرام". السائق يسجل العداد والمصاريف بالشات، والنظام يحسب الرواتب وصافي الربح لحظياً.</p></div>
+                        <div class="flex gap-3">
+                            <div class="min-w-[24px] text-red-400"><i class="fas fa-times-circle"></i></div>
+                            <p>
+                                <strong class="text-white"><span class="lang-ar">المشكلة:</span><span class="lang-en hidden-lang">Problem:</span></strong>
+                                <span class="lang-ar">إدارة السائقين والمصاريف اليومية عبر الهاتف تسبب أخطاء.</span>
+                                <span class="lang-en hidden-lang">Managing drivers and daily expenses via phone calls causes errors.</span>
+                            </p>
+                        </div>
+                        <div class="flex gap-3">
+                            <div class="min-w-[24px] text-green-400"><i class="fas fa-check-circle"></i></div>
+                            <p>
+                                <strong class="text-white"><span class="lang-ar">الحل:</span><span class="lang-en hidden-lang">Solution:</span></strong>
+                                <span class="lang-ar">نظام ERP كامل يعمل داخل "تيليجرام". السائق يسجل العداد والمصاريف بالشات، والنظام يحسب الرواتب لحظياً.</span>
+                                <span class="lang-en hidden-lang">Full ERP system inside Telegram. Drivers log counters/expenses via chat, system calculates payroll instantly.</span>
+                            </p>
+                        </div>
                     </div>
                     <div class="mt-6 pt-6 border-t border-slate-700/50 flex flex-wrap gap-2">
                         <span class="px-3 py-1 bg-slate-800 rounded text-xs text-slate-400">Google Apps Script</span>
@@ -242,8 +315,22 @@
                 <div class="p-8 md:w-3/5 flex flex-col justify-center">
                     <h3 class="text-2xl font-bold mb-4 text-white">E-commerce Inventory Sniper</h3>
                     <div class="space-y-4 text-sm text-slate-300">
-                        <div class="flex gap-3"><div class="min-w-[24px] text-red-400"><i class="fas fa-times-circle"></i></div><p><strong class="text-white">المشكلة:</strong> عدم معرفة المخزون المتوفر لدى المنافسين بدقة.</p></div>
-                        <div class="flex gap-3"><div class="min-w-[24px] text-green-400"><i class="fas fa-check-circle"></i></div><p><strong class="text-white">الحل:</strong> بوت يسحب خريطة المخزون لكل "مقاس" (Size) على حدة من المواقع العالمية، مما يكشف الفرص التجارية.</p></div>
+                        <div class="flex gap-3">
+                            <div class="min-w-[24px] text-red-400"><i class="fas fa-times-circle"></i></div>
+                            <p>
+                                <strong class="text-white"><span class="lang-ar">المشكلة:</span><span class="lang-en hidden-lang">Problem:</span></strong>
+                                <span class="lang-ar">عدم معرفة المخزون المتوفر لدى المنافسين بدقة.</span>
+                                <span class="lang-en hidden-lang">Lack of accurate visibility on competitors' available stock.</span>
+                            </p>
+                        </div>
+                        <div class="flex gap-3">
+                            <div class="min-w-[24px] text-green-400"><i class="fas fa-check-circle"></i></div>
+                            <p>
+                                <strong class="text-white"><span class="lang-ar">الحل:</span><span class="lang-en hidden-lang">Solution:</span></strong>
+                                <span class="lang-ar">بوت يسحب خريطة المخزون لكل "مقاس" (Size) على حدة من المواقع العالمية، مما يكشف الفرص التجارية.</span>
+                                <span class="lang-en hidden-lang">Bot scraping full stock map for every "Size" from global sites, revealing arbitrage opportunities.</span>
+                            </p>
+                        </div>
                     </div>
                     <div class="mt-6 pt-6 border-t border-slate-700/50 flex flex-wrap gap-2">
                         <span class="px-3 py-1 bg-slate-800 rounded text-xs text-slate-400">Python Scraping</span>
@@ -261,8 +348,22 @@
                 <div class="p-8 md:w-3/5 flex flex-col justify-center">
                     <h3 class="text-2xl font-bold mb-4 text-white">Social Community Hunters</h3>
                     <div class="space-y-4 text-sm text-slate-300">
-                        <div class="flex gap-3"><div class="min-w-[24px] text-red-400"><i class="fas fa-times-circle"></i></div><p><strong class="text-white">المشكلة:</strong> ضياع فرص البيع وسط آلاف المنشورات في الجروبات.</p></div>
-                        <div class="flex gap-3"><div class="min-w-[24px] text-green-400"><i class="fas fa-check-circle"></i></div><p><strong class="text-white">الحل:</strong> رادارات ذكية تراقب جروبات واتساب وفيسبوك لحظياً، تلتقط الكلمات المفتاحية وترسل تنبيهاً فورياً للمبيعات.</p></div>
+                        <div class="flex gap-3">
+                            <div class="min-w-[24px] text-red-400"><i class="fas fa-times-circle"></i></div>
+                            <p>
+                                <strong class="text-white"><span class="lang-ar">المشكلة:</span><span class="lang-en hidden-lang">Problem:</span></strong>
+                                <span class="lang-ar">ضياع فرص البيع وسط آلاف المنشورات في الجروبات.</span>
+                                <span class="lang-en hidden-lang">Losing sales opportunities amidst thousands of group posts.</span>
+                            </p>
+                        </div>
+                        <div class="flex gap-3">
+                            <div class="min-w-[24px] text-green-400"><i class="fas fa-check-circle"></i></div>
+                            <p>
+                                <strong class="text-white"><span class="lang-ar">الحل:</span><span class="lang-en hidden-lang">Solution:</span></strong>
+                                <span class="lang-ar">رادارات ذكية تراقب جروبات واتساب وفيسبوك لحظياً، تلتقط الكلمات المفتاحية وترسل تنبيهاً فورياً للمبيعات.</span>
+                                <span class="lang-en hidden-lang">Smart radars monitoring WhatsApp & FB groups instantly, capturing keywords and alerting sales.</span>
+                            </p>
+                        </div>
                     </div>
                     <div class="mt-6 pt-6 border-t border-slate-700/50 flex flex-wrap gap-2">
                         <span class="px-3 py-1 bg-slate-800 rounded text-xs text-slate-400">Puppeteer</span>
@@ -281,8 +382,22 @@
                 <div class="p-8 md:w-3/5 flex flex-col justify-center">
                     <h3 class="text-2xl font-bold mb-4 text-white">Interactive Sales Agent</h3>
                     <div class="space-y-4 text-sm text-slate-300">
-                        <div class="flex gap-3"><div class="min-w-[24px] text-red-400"><i class="fas fa-times-circle"></i></div><p><strong class="text-white">المشكلة:</strong> إضاعة وقت فريق المبيعات في الإجابة على الأسئلة المتكررة.</p></div>
-                        <div class="flex gap-3"><div class="min-w-[24px] text-green-400"><i class="fas fa-check-circle"></i></div><p><strong class="text-white">الحل:</strong> بوت مبيعات ذكي يقوم بشرح المنتج، حساب التوفير المالي للعميل، وإغلاق الصفقة آلياً.</p></div>
+                        <div class="flex gap-3">
+                            <div class="min-w-[24px] text-red-400"><i class="fas fa-times-circle"></i></div>
+                            <p>
+                                <strong class="text-white"><span class="lang-ar">المشكلة:</span><span class="lang-en hidden-lang">Problem:</span></strong>
+                                <span class="lang-ar">إضاعة وقت فريق المبيعات في الإجابة على الأسئلة المتكررة.</span>
+                                <span class="lang-en hidden-lang">Sales team wasting time answering repetitive questions.</span>
+                            </p>
+                        </div>
+                        <div class="flex gap-3">
+                            <div class="min-w-[24px] text-green-400"><i class="fas fa-check-circle"></i></div>
+                            <p>
+                                <strong class="text-white"><span class="lang-ar">الحل:</span><span class="lang-en hidden-lang">Solution:</span></strong>
+                                <span class="lang-ar">بوت مبيعات ذكي يقوم بشرح المنتج، حساب التوفير المالي للعميل، وإغلاق الصفقة آلياً.</span>
+                                <span class="lang-en hidden-lang">Smart sales bot explaining the product, calculating ROI, and closing deals automatically.</span>
+                            </p>
+                        </div>
                     </div>
                     <div class="mt-6 pt-6 border-t border-slate-700/50 flex flex-wrap gap-2">
                         <span class="px-3 py-1 bg-slate-800 rounded text-xs text-slate-400">Conversion Funnel</span>
@@ -291,15 +406,55 @@
                 </div>
             </div>
 
+            <div class="glass-card p-0 overflow-hidden group flex flex-col md:flex-row-reverse">
+                <div class="md:w-2/5 bg-slate-800 relative min-h-[300px]">
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition duration-700" alt="IoT Security">
+                    <div class="absolute bottom-0 left-0 p-6 bg-gradient-to-t from-black/90 to-transparent w-full">
+                        <span class="project-tag bg-orange-600 text-white">IoT Security</span>
+                    </div>
+                </div>
+                <div class="p-8 md:w-3/5 flex flex-col justify-center">
+                    <h3 class="text-2xl font-bold mb-4 text-white">Viber Cloud Security</h3>
+                    <div class="space-y-4 text-sm text-slate-300">
+                        <div class="flex gap-3">
+                            <div class="min-w-[24px] text-red-400"><i class="fas fa-times-circle"></i></div>
+                            <p>
+                                <strong class="text-white"><span class="lang-ar">المشكلة:</span><span class="lang-en hidden-lang">Problem:</span></strong>
+                                <span class="lang-ar">التحكم اليدوي في بوابات الأمن وصعوبة الرقابة عن بعد.</span>
+                                <span class="lang-en hidden-lang">Manual control of security gates and lack of remote monitoring.</span>
+                            </p>
+                        </div>
+                        <div class="flex gap-3">
+                            <div class="min-w-[24px] text-green-400"><i class="fas fa-check-circle"></i></div>
+                            <p>
+                                <strong class="text-white"><span class="lang-ar">الحل:</span><span class="lang-en hidden-lang">Solution:</span></strong>
+                                <span class="lang-ar">ربط بوابات الأمن بالسحابة (Cloud) للتحكم في الدخول والخروج عبر الموبايل، مع تسجيل لحظي للحضور.</span>
+                                <span class="lang-en hidden-lang">IoT system linking gates to Cloud for mobile access control and real-time attendance logging.</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="mt-6 pt-6 border-t border-slate-700/50 flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-slate-800 rounded text-xs text-slate-400">IoT Integration</span>
+                        <span class="px-3 py-1 bg-slate-800 rounded text-xs text-slate-400">Cloud Control</span>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <div class="max-w-3xl mx-auto text-center mt-20 p-10 glass-card border border-indigo-500/30">
-            <h2 class="text-3xl font-bold mb-4 text-white">هل تواجه تحدياً تقنياً في شركتك؟</h2>
-            <p class="text-slate-400 mb-8">نحن متخصصون في بناء "الحلول المفصلة" (Custom Solutions). لا تتردد في مناقشة فكرتك معنا.</p>
-            
+            <h2 class="text-3xl font-bold mb-4 text-white">
+                <span class="lang-ar">هل تواجه تحدياً تقنياً في شركتك؟</span>
+                <span class="lang-en hidden-lang">Facing a technical challenge?</span>
+            </h2>
+            <p class="text-slate-400 mb-8">
+                <span class="lang-ar">نحن متخصصون في بناء "الحلول المفصلة" (Custom Solutions). لا تتردد في مناقشة فكرتك معنا.</span>
+                <span class="lang-en hidden-lang">We specialize in building "Custom Solutions". Feel free to discuss your idea with us.</span>
+            </p>
             <button onclick="openMsgModal()" class="inline-flex items-center gap-3 px-8 py-4 bg-white text-indigo-900 rounded-xl font-bold text-lg hover:bg-slate-200 transition shadow-lg">
-                <i class="fas fa-comment-dots"></i>
-                احجز استشارة مجانية
+                <i class="fas fa-comment-dots"></i> 
+                <span class="lang-ar">احجز استشارة مجانية</span>
+                <span class="lang-en hidden-lang">Book Free Consultation</span>
             </button>
         </div>
     </section>
@@ -312,18 +467,35 @@
                     <span class="text-xl font-bold text-white">24Seven<span class="text-indigo-400">.ai</span></span>
                 </div>
                 <p class="text-slate-400 text-sm leading-relaxed mb-6">
-                    المنصة الأولى عربياً للذكاء البيعي وتوليد العملاء المحتملين بدقة عالية.
+                    <span class="lang-ar">المنصة الأولى عربياً للذكاء البيعي وتوليد العملاء المحتملين بدقة عالية.</span>
+                    <span class="lang-en hidden-lang">The #1 Sales Intelligence platform in MENA for high-accuracy lead generation.</span>
                 </p>
             </div>
             <div>
-                <h4 class="text-white font-bold mb-6">روابط سريعة</h4>
+                <h4 class="text-white font-bold mb-6">
+                    <span class="lang-ar">روابط سريعة</span>
+                    <span class="lang-en hidden-lang">Quick Links</span>
+                </h4>
                 <ul class="space-y-3 text-sm text-slate-400">
-                    <li><button onclick="openRequestModal()" class="hover:text-indigo-400 transition">طلب تجربة النظام</button></li>
-                    <li><a href="index.html" class="hover:text-indigo-400 transition">الرئيسية</a></li>
+                    <li>
+                        <button onclick="openRequestModal()" class="hover:text-indigo-400 transition ltr:text-left w-full text-right">
+                            <span class="lang-ar">طلب تجربة النظام</span>
+                            <span class="lang-en hidden-lang">Request Access</span>
+                        </button>
+                    </li>
+                    <li>
+                        <a href="index.html" class="hover:text-indigo-400 transition">
+                            <span class="lang-ar">الرئيسية</span>
+                            <span class="lang-en hidden-lang">Home</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div>
-                <h4 class="text-white font-bold mb-6">تواصل معنا</h4>
+                <h4 class="text-white font-bold mb-6">
+                    <span class="lang-ar">تواصل معنا</span>
+                    <span class="lang-en hidden-lang">Contact Us</span>
+                </h4>
                 <ul class="space-y-4 text-sm text-slate-400">
                     <li class="flex items-center gap-3">
                         <i class="fas fa-envelope text-indigo-500"></i>
@@ -342,20 +514,35 @@
             <button onclick="closeAllModals()" class="absolute top-4 right-4 text-slate-400 hover:text-white"><i class="fas fa-times text-xl"></i></button>
             <div class="text-center mb-6">
                 <div class="w-12 h-12 bg-blue-600/20 text-blue-500 rounded-full mx-auto flex items-center justify-center mb-3 text-xl"><i class="fas fa-paper-plane"></i></div>
-                <h3 class="text-2xl font-bold mb-2 text-white">راسلنا مباشرة</h3>
-                <p class="text-sm text-slate-400">سيتم الرد على استفسارك التقني خلال 24 ساعة.</p>
+                <h3 class="text-2xl font-bold mb-2 text-white">
+                    <span class="lang-ar">راسلنا مباشرة</span>
+                    <span class="lang-en hidden-lang">Contact Us Directly</span>
+                </h3>
+                <p class="text-sm text-slate-400">
+                    <span class="lang-ar">سيتم الرد على استفسارك التقني خلال 24 ساعة.</span>
+                    <span class="lang-en hidden-lang">We will reply to your technical inquiry within 24 hours.</span>
+                </p>
             </div>
             <form action="https://formspree.io/f/xzddpdga" method="POST" class="space-y-4">
                 <input type="hidden" name="_subject" value="Inquiry from Projects Page">
                 <div>
-                    <label class="block text-xs text-slate-400 mb-1">البريد الإلكتروني</label>
+                    <label class="block text-xs text-slate-400 mb-1">
+                        <span class="lang-ar">البريد الإلكتروني</span>
+                        <span class="lang-en hidden-lang">Email Address</span>
+                    </label>
                     <input type="email" name="email" required class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 focus:border-indigo-500 focus:outline-none transition text-white">
                 </div>
                 <div>
-                    <label class="block text-xs text-slate-400 mb-1">تفاصيل المشروع / الفكرة</label>
+                    <label class="block text-xs text-slate-400 mb-1">
+                        <span class="lang-ar">الرسالة / تفاصيل المشروع</span>
+                        <span class="lang-en hidden-lang">Message / Project Details</span>
+                    </label>
                     <textarea name="message" rows="4" required class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 focus:border-indigo-500 focus:outline-none transition text-white"></textarea>
                 </div>
-                <button type="submit" class="w-full py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold rounded-xl shadow-lg transition">إرسال الرسالة</button>
+                <button type="submit" class="w-full py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold rounded-xl shadow-lg transition">
+                    <span class="lang-ar">إرسال الرسالة</span>
+                    <span class="lang-en hidden-lang">Send Message</span>
+                </button>
             </form>
         </div>
     </div>
@@ -365,30 +552,51 @@
             <button onclick="closeAllModals()" class="absolute top-4 right-4 text-slate-400 hover:text-white"><i class="fas fa-times text-xl"></i></button>
             <div class="text-center mb-6">
                 <div class="w-12 h-12 bg-green-600/20 text-green-500 rounded-full mx-auto flex items-center justify-center mb-3 text-xl"><i class="fas fa-lock"></i></div>
-                <h3 class="text-2xl font-bold mb-2 text-white">طلب صلاحية دخول</h3>
-                <p class="text-sm text-slate-400">سجل بياناتك وسيتم إرسال الرابط لبريدك الإلكتروني.</p>
+                <h3 class="text-2xl font-bold mb-2 text-white">
+                    <span class="lang-ar">طلب صلاحية دخول</span>
+                    <span class="lang-en hidden-lang">Request Access</span>
+                </h3>
+                <p class="text-sm text-slate-400">
+                    <span class="lang-ar">سجل بياناتك وسيتم إرسال الرابط لبريدك الإلكتروني.</span>
+                    <span class="lang-en hidden-lang">Register your details and the link will be sent to your email.</span>
+                </p>
             </div>
             <form action="https://formspree.io/f/xzddpdga" method="POST" class="space-y-4">
                 <input type="hidden" name="_subject" value="DEMO REQUEST from Projects Page">
                 <div class="grid grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-xs text-slate-400 mb-1">الاسم</label>
+                        <label class="block text-xs text-slate-400 mb-1">
+                            <span class="lang-ar">الاسم</span>
+                            <span class="lang-en hidden-lang">Name</span>
+                        </label>
                         <input type="text" name="name" required class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 focus:border-green-500 transition text-white">
                     </div>
                     <div>
-                        <label class="block text-xs text-slate-400 mb-1">الهاتف</label>
+                        <label class="block text-xs text-slate-400 mb-1">
+                            <span class="lang-ar">الهاتف</span>
+                            <span class="lang-en hidden-lang">Phone</span>
+                        </label>
                         <input type="tel" name="phone" required class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 focus:border-green-500 transition text-white">
                     </div>
                 </div>
                 <div>
-                    <label class="block text-xs text-slate-400 mb-1">البريد الإلكتروني</label>
+                    <label class="block text-xs text-slate-400 mb-1">
+                        <span class="lang-ar">البريد الإلكتروني</span>
+                        <span class="lang-en hidden-lang">Email</span>
+                    </label>
                     <input type="email" name="email" required class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 focus:border-green-500 transition text-white">
                 </div>
                 <div>
-                    <label class="block text-xs text-slate-400 mb-1">اسم الشركة</label>
+                    <label class="block text-xs text-slate-400 mb-1">
+                        <span class="lang-ar">اسم الشركة</span>
+                        <span class="lang-en hidden-lang">Company Name</span>
+                    </label>
                     <input type="text" name="company" required class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 focus:border-green-500 transition text-white">
                 </div>
-                <button type="submit" class="w-full py-4 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-bold rounded-xl shadow-lg transition transform hover:scale-[1.01]">تسجيل طلب الدخول</button>
+                <button type="submit" class="w-full py-4 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-bold rounded-xl shadow-lg transition transform hover:scale-[1.01]">
+                    <span class="lang-ar">تسجيل طلب الدخول</span>
+                    <span class="lang-en hidden-lang">Submit Request</span>
+                </button>
             </form>
         </div>
     </div>
@@ -420,15 +628,32 @@
                 overlay.classList.add('active');
             }
         }
+        
+        // Language Toggle Logic
         function toggleLang() {
             const html = document.documentElement;
             const currentLang = html.getAttribute('lang');
             const newLang = currentLang === 'ar' ? 'en' : 'ar';
-            const langLabelSide = document.getElementById('lang-label-side');
+            const langLabelNav = document.getElementById('lang-label-nav');
+            
+            // 1. Change HTML Lang & Direction
             html.setAttribute('lang', newLang);
             html.setAttribute('dir', newLang === 'ar' ? 'rtl' : 'ltr');
-            if(langLabelSide) langLabelSide.innerText = newLang === 'ar' ? 'English' : 'العربية';
-            const hiddenLang = document.querySelectorAll('.hidden-lang');
+            
+            // 2. Update Toggle Button Text
+            if(langLabelNav) langLabelNav.innerText = newLang === 'ar' ? 'English' : 'العربية';
+            
+            // 3. Toggle Visibility of Elements
+            const arElements = document.querySelectorAll('.lang-ar');
+            const enElements = document.querySelectorAll('.lang-en');
+            
+            if (newLang === 'en') {
+                arElements.forEach(el => el.classList.add('hidden-lang'));
+                enElements.forEach(el => el.classList.remove('hidden-lang'));
+            } else {
+                arElements.forEach(el => el.classList.remove('hidden-lang'));
+                enElements.forEach(el => el.classList.add('hidden-lang'));
+            }
         }
     </script>
 </body>
