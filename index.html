@@ -14,7 +14,7 @@
         :root {
             --bg-dark: #0f172a;
             --primary: #6366f1;
-            --glass-bg: rgba(30, 41, 59, 0.95); /* Sidebar needs higher opacity */
+            --glass-bg: rgba(30, 41, 59, 0.95);
             --gradient-main: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
         }
 
@@ -45,7 +45,15 @@
         }
         .overlay.active { opacity: 1; visibility: visible; }
 
-        /* Other Styles */
+        /* Modal Transitions */
+        .modal {
+            opacity: 0; visibility: hidden; pointer-events: none; transition: 0.3s ease;
+        }
+        .modal.active {
+            opacity: 1; visibility: visible; pointer-events: auto;
+        }
+
+        /* General Styles */
         .bg-glow {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
             background: 
@@ -86,7 +94,7 @@
 <body class="selection:bg-indigo-500 selection:text-white">
 
     <div class="bg-glow"></div>
-    <div id="overlay" class="overlay" onclick="toggleSidebar()"></div>
+    <div id="overlay" class="overlay" onclick="closeAllModals()"></div>
 
     <aside id="sidebar">
         <div class="flex justify-between items-center mb-10">
@@ -101,9 +109,9 @@
                 </a>
             </li>
             <li>
-                <a href="demo.html" onclick="toggleSidebar()" class="flex items-center gap-3 text-slate-300 hover:text-indigo-400 text-lg transition">
-                    <i class="fas fa-rocket w-6"></i> تجربة النظام
-                </a>
+                <button onclick="openRequestModal(); toggleSidebar();" class="flex items-center gap-3 text-slate-300 hover:text-indigo-400 text-lg transition w-full text-right">
+                    <i class="fas fa-rocket w-6"></i> طلب تجربة النظام
+                </button>
             </li>
             <li>
                 <a href="guide.html" onclick="toggleSidebar()" class="flex items-center gap-3 text-slate-300 hover:text-indigo-400 text-lg transition">
@@ -111,10 +119,10 @@
                 </a>
             </li>
             <li>
-                <a href="mailto:kreta20161@gmail.com" class="flex items-center gap-3 text-slate-300 hover:text-indigo-400 text-lg transition">
+                <button onclick="openMsgModal(); toggleSidebar();" class="flex items-center gap-3 text-slate-300 hover:text-indigo-400 text-lg transition w-full text-right">
                     <i class="fas fa-envelope w-6"></i> 
                     <span class="font-mono">info@24sevenAi.com</span>
-                </a>
+                </button>
             </li>
         </ul>
 
@@ -158,11 +166,11 @@
         </p>
 
         <div class="flex flex-col md:flex-row gap-4 w-full max-w-md md:max-w-none justify-center z-10">
-            <a href="demo.html" class="btn btn-primary">
+            <button onclick="openRequestModal()" class="btn btn-primary">
                 <i class="fas fa-rocket"></i> 
-                <span class="lang-ar">جرب محرك الداتا (مجاناً)</span>
-                <span class="lang-en hidden-lang">Try Data Engine (Free)</span>
-            </a>
+                <span class="lang-ar">اطلب تجربة النظام (Access)</span>
+                <span class="lang-en hidden-lang">Request Access</span>
+            </button>
             <a href="#projects" class="btn btn-outline">
                 <i class="fas fa-layer-group text-indigo-400"></i>
                 <span class="lang-ar">استكشف مشاريعنا</span>
@@ -221,41 +229,6 @@
         </div>
     </section>
 
-    <section class="py-24 px-6 relative">
-        <div class="max-w-4xl mx-auto glass-card p-10 border border-indigo-500/20">
-            <div class="text-center mb-10">
-                <h2 class="text-3xl font-bold mb-4">
-                    <span class="lang-ar">ابدأ مشروعك القادم معنا</span>
-                    <span class="lang-en hidden-lang">Start Your Next Project</span>
-                </h2>
-                <p class="text-slate-400">
-                    <span class="lang-ar">هل لديك فكرة أو تحتاج لحل مخصص؟ راسلنا مباشرة.</span>
-                    <span class="lang-en hidden-lang">Have an idea or need a custom solution? Email us directly.</span>
-                </p>
-            </div>
-
-            <form action="https://formspree.io/f/xzddpdga" method="POST" class="space-y-6">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-sm text-indigo-300 mb-2">الاسم / Name</label>
-                        <input type="text" name="name" required class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 focus:border-indigo-500 focus:outline-none transition text-white">
-                    </div>
-                    <div>
-                        <label class="block text-sm text-indigo-300 mb-2">البريد الإلكتروني / Email</label>
-                        <input type="email" name="email" required class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 focus:border-indigo-500 focus:outline-none transition text-white">
-                    </div>
-                </div>
-                <div>
-                    <label class="block text-sm text-indigo-300 mb-2">رسالتك / Your Message</label>
-                    <textarea name="message" rows="4" required class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 focus:border-indigo-500 focus:outline-none transition text-white"></textarea>
-                </div>
-                <button type="submit" class="w-full py-4 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold rounded-xl shadow-lg transition transform hover:scale-[1.01]">
-                    <i class="fas fa-paper-plane mr-2"></i> إرسال الرسالة
-                </button>
-            </form>
-        </div>
-    </section>
-
     <footer class="bg-[#020617] border-t border-slate-800 pt-16 pb-8">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12">
             <div>
@@ -271,7 +244,7 @@
             <div>
                 <h4 class="text-white font-bold mb-6">روابط سريعة</h4>
                 <ul class="space-y-3 text-sm text-slate-400">
-                    <li><a href="demo.html" class="hover:text-indigo-400 transition">تجربة النظام</a></li>
+                    <li><button onclick="openRequestModal()" class="hover:text-indigo-400 transition text-right w-full">طلب تجربة النظام</button></li>
                     <li><a href="guide.html" class="hover:text-indigo-400 transition">دليل الاستخدام</a></li>
                     <li><a href="#projects" class="hover:text-indigo-400 transition">مشاريعنا</a></li>
                 </ul>
@@ -285,7 +258,7 @@
                     </li>
                     <li class="flex items-center gap-3">
                         <i class="fas fa-envelope text-indigo-500"></i>
-                        <a href="mailto:kreta20161@gmail.com" class="hover:text-white transition font-bold font-mono">info@24sevenAi.com</a>
+                        <button onclick="openMsgModal()" class="hover:text-white transition font-bold font-mono">info@24sevenAi.com</button>
                     </li>
                 </ul>
             </div>
@@ -295,23 +268,155 @@
         </div>
     </footer>
 
+    <div id="contactModal" class="modal fixed inset-0 z-[1100] flex items-center justify-center p-4">
+        <div class="glass-card w-full max-w-md p-8 relative transform transition-all scale-100 bg-slate-900/95 border border-slate-700 shadow-2xl">
+            <button onclick="closeAllModals()" class="absolute top-4 right-4 text-slate-400 hover:text-white"><i class="fas fa-times text-xl"></i></button>
+            <div class="text-center mb-6">
+                <h3 class="text-2xl font-bold mb-2 text-white">بيانات الشركة</h3>
+                <p class="text-sm text-slate-400">قنوات التواصل الرسمية</p>
+            </div>
+            <div class="space-y-4">
+                <div class="flex items-center gap-4 p-4 rounded-xl bg-slate-800/50 border border-slate-700">
+                    <div class="w-10 h-10 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center"><i class="fas fa-phone"></i></div>
+                    <div class="text-right flex-1">
+                        <p class="text-xs text-slate-400">Hotline</p>
+                        <p class="font-bold text-white font-mono" dir="ltr">+20 112 174 8885</p>
+                    </div>
+                </div>
+                <a href="https://wa.me/201121748885" target="_blank" class="flex items-center gap-4 p-4 rounded-xl bg-slate-800/50 hover:bg-green-900/20 border border-slate-700 hover:border-green-500/50 transition">
+                    <div class="w-10 h-10 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center"><i class="fab fa-whatsapp text-xl"></i></div>
+                    <div class="text-right flex-1">
+                        <p class="text-xs text-slate-400">WhatsApp</p>
+                        <p class="font-bold text-white">Chat Support</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="msgModal" class="modal fixed inset-0 z-[1100] flex items-center justify-center p-4">
+        <div class="glass-card w-full max-w-lg p-8 relative transform transition-all scale-100 bg-slate-900/95 border border-slate-700 shadow-2xl">
+            <button onclick="closeAllModals()" class="absolute top-4 right-4 text-slate-400 hover:text-white"><i class="fas fa-times text-xl"></i></button>
+            
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 bg-blue-600/20 text-blue-500 rounded-full mx-auto flex items-center justify-center mb-3 text-xl"><i class="fas fa-paper-plane"></i></div>
+                <h3 class="text-2xl font-bold mb-2 text-white">راسلنا مباشرة</h3>
+                <p class="text-sm text-slate-400">سيتم الرد على بريدك الإلكتروني خلال 24 ساعة.</p>
+            </div>
+
+            <form action="https://formspree.io/f/xzddpdga" method="POST" class="space-y-4">
+                <input type="hidden" name="_subject" value="New Message via Website">
+                
+                <div>
+                    <label class="block text-xs text-slate-400 mb-1">البريد الإلكتروني / Your Email</label>
+                    <input type="email" name="email" required class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 focus:border-indigo-500 focus:outline-none transition text-white" placeholder="name@company.com">
+                </div>
+                <div>
+                    <label class="block text-xs text-slate-400 mb-1">الرسالة / Message</label>
+                    <textarea name="message" rows="4" required class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 focus:border-indigo-500 focus:outline-none transition text-white" placeholder="اكتب استفسارك هنا..."></textarea>
+                </div>
+                <button type="submit" class="w-full py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold rounded-xl shadow-lg transition">
+                    إرسال الرسالة
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div id="requestModal" class="modal fixed inset-0 z-[1100] flex items-center justify-center p-4">
+        <div class="glass-card w-full max-w-lg p-8 relative transform transition-all scale-100 bg-slate-900/95 border border-slate-700 shadow-2xl">
+            <button onclick="closeAllModals()" class="absolute top-4 right-4 text-slate-400 hover:text-white"><i class="fas fa-times text-xl"></i></button>
+            
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 bg-green-600/20 text-green-500 rounded-full mx-auto flex items-center justify-center mb-3 text-xl"><i class="fas fa-lock"></i></div>
+                <h3 class="text-2xl font-bold mb-2 text-white">طلب صلاحية دخول</h3>
+                <p class="text-sm text-slate-400">
+                    النظام متاح لعدد محدود حالياً. سجل بياناتك وسيتم إرسال <span class="text-green-400 font-bold">رابط الدخول</span> لبريدك الإلكتروني بعد المراجعة.
+                </p>
+            </div>
+
+            <form action="https://formspree.io/f/xzddpdga" method="POST" class="space-y-4">
+                <input type="hidden" name="_subject" value="🚀 DEMO REQUEST from Website">
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs text-slate-400 mb-1">الاسم</label>
+                        <input type="text" name="name" required class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 focus:border-green-500 transition text-white">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-slate-400 mb-1">الهاتف</label>
+                        <input type="tel" name="phone" required class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 focus:border-green-500 transition text-white">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs text-slate-400 mb-1">البريد الإلكتروني (مهم جداً لاستلام الرابط)</label>
+                    <input type="email" name="email" required class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 focus:border-green-500 transition text-white">
+                </div>
+                <div>
+                    <label class="block text-xs text-slate-400 mb-1">اسم الشركة / النشاط</label>
+                    <input type="text" name="company" required class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 focus:border-green-500 transition text-white">
+                </div>
+                
+                <button type="submit" class="w-full py-4 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-bold rounded-xl shadow-lg transition transform hover:scale-[1.01]">
+                    تسجيل طلب الدخول
+                </button>
+                <p class="text-xs text-center text-slate-500 mt-2">سيصلك الرد خلال دقائق في أوقات العمل.</p>
+            </form>
+        </div>
+    </div>
+
     <script>
+        // Modal Logic
+        function closeAllModals() {
+            document.querySelectorAll('.modal').forEach(m => m.classList.remove('active'));
+            document.getElementById('overlay').classList.remove('active');
+            document.getElementById('sidebar').classList.remove('active'); // Close sidebar too if open
+        }
+
+        function openModal() {
+            closeAllModals();
+            document.getElementById('overlay').classList.add('active');
+            document.getElementById('contactModal').classList.add('active');
+        }
+
+        function openMsgModal() {
+            closeAllModals();
+            document.getElementById('overlay').classList.add('active');
+            document.getElementById('msgModal').classList.add('active');
+        }
+
+        function openRequestModal() {
+            closeAllModals();
+            document.getElementById('overlay').classList.add('active');
+            document.getElementById('requestModal').classList.add('active');
+        }
+
+        // Sidebar Logic
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
             const overlay = document.getElementById('overlay');
-            sidebar.classList.toggle('active');
-            overlay.classList.toggle('active');
+            
+            if (sidebar.classList.contains('active')) {
+                sidebar.classList.remove('active');
+                overlay.classList.remove('active');
+            } else {
+                sidebar.classList.add('active');
+                overlay.classList.add('active');
+            }
         }
 
+        // Language Logic
         function toggleLang() {
             const html = document.documentElement;
             const currentLang = html.getAttribute('lang');
             const newLang = currentLang === 'ar' ? 'en' : 'ar';
+            const langLabel = document.getElementById('lang-label');
             const langLabelSide = document.getElementById('lang-label-side');
             
             html.setAttribute('lang', newLang);
             html.setAttribute('dir', newLang === 'ar' ? 'rtl' : 'ltr');
-            langLabelSide.innerText = newLang === 'ar' ? 'English' : 'العربية';
+            
+            if(langLabel) langLabel.innerText = newLang === 'ar' ? 'English' : 'العربية';
+            if(langLabelSide) langLabelSide.innerText = newLang === 'ar' ? 'English' : 'العربية';
             
             const arElements = document.querySelectorAll('.lang-ar');
             const enElements = document.querySelectorAll('.lang-en');
